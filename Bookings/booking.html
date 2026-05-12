@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Service</title>
+
+    <!-- FIXED PATH (since booking.html is in another folder) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Tandikan Services</h1>
+</header>
+
+<section class="booking-wrapper">
+    <div class="booking-card">
+        <h2>Book a Service</h2>
+        <p>Fill in the details below to schedule your service</p>
+
+        <form>
+            <input type="text" placeholder="Full Name" required>
+            <input type="text" placeholder="Address" required>
+
+            <!-- NEW: ICON SERVICE SELECTION -->
+            <div class="service-options">
+
+                <label class="service-card">
+                    <input type="radio" name="service" value="Cleaning" required>
+                    <div class="card-content">
+                        🧹
+                        <p>Cleaning</p>
+                    </div>
+                </label>
+
+                <label class="service-card">
+                    <input type="radio" name="service" value="Plumbing">
+                    <div class="card-content">
+                        🔧
+                        <p>Plumbing</p>
+                    </div>
+                </label>
+
+                <label class="service-card">
+                    <input type="radio" name="service" value="Electrical">
+                    <div class="card-content">
+                        ⚡
+                        <p>Electrical</p>
+                    </div>
+                </label>
+
+            </div>
+
+            <input type="date" required>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+
+        <!-- FIXED BACK LINK -->
+        <a href="..\homepage\view.html" class="back-btn">← Back to Home</a>
+    </div>
+</section>
+<script type="module" src="..\Authentication\auth.js"></script>
+</body>
+</html>

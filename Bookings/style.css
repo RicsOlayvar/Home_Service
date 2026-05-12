@@ -1,0 +1,102 @@
+/* PINK BACKGROUND */
+.booking-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+}
+
+/* CARD */
+.booking-card {
+    background: white;
+    padding: 30px;
+    width: 360px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* FORM */
+.booking-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.booking-card input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTON */
+.booking-card button {
+    background-color: #ff4e8a;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.booking-card button:hover {
+    background-color: #e8437a;
+}
+
+/* SERVICE OPTIONS */
+.service-options {
+    display: flex;
+    gap: 10px;
+}
+
+/* HIDE RADIO */
+.service-card input {
+    display: none;
+}
+
+/* CARD STYLE */
+.service-card {
+    flex: 1;
+    cursor: pointer;
+}
+
+.card-content {
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    font-size: 22px;
+}
+
+.card-content p {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* HOVER */
+.service-card:hover .card-content {
+    background: #ffe4ec;
+}
+
+/* SELECTED */
+.service-card input:checked + .card-content {
+    border: 2px solid #ff4e8a;
+    background: #ffd6e5;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.back-btn:hover {
+    color: #ff4e8a;
+}

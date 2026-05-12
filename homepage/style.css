@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* BODY */
+body {
+    background-color: #fff0f5; /* light pink background */
+    color: #333;
+}
+
+/* HEADER */
+header {
+    background-color: #d63384; /* dark pink */
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+/* NAVIGATION */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffb3c6;
+}
+
+/* HERO SECTION */
+.hero {
+    background: linear-gradient(rgba(255, 105, 135, 0.6), rgba(255, 182, 193, 0.6)),
+                url('https://images.unsplash.com/photo-1581578731548-c64695cc6952');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+/* SERVICES */
+.services {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.services h2 {
+    margin-bottom: 30px;
+}
+
+/* SERVICE CARDS */
+.service-item {
+    background: white;
+    margin: 15px auto;
+    padding: 20px;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    background-color: #ffe4ec; /* pink hover */
+}
+
+/* BOOK BUTTON */
+.book-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.book-btn {
+    background-color: #ff4e8a;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #e8437a;
+    transform: scale(1.05);
+}
+
+/* CONTACT */
+.contact {
+    background-color: #ffd6e5;
+    padding: 30px;
+    text-align: center;
+}
+
+.contact a {
+    color: #d63384;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    color: #ff4e8a;
+}
+
+/* LOGO */
+
+/* LOGO CONTAINER */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* LOGO IMAGE */
+.logo-container img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* OPTIONAL: make text closer */
+.logo-container h1 {
+    font-size: 22px;
+}
+
+/* LOGIN BUTTON */
+
+nav ul li:last-child a {
+    background-color: #ff4e8a;
+    padding: 8px 14px;
+    border-radius: 6px;
+}
+
+nav ul li:last-child a:hover {
+    background-color: #e8437a;
+    color: white;
+}
+
+/* LOGOUT BUTTON */
+
+.logout-btn {
+    background-color: #ff4e8a;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #e8437a;
+}

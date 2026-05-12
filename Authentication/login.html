@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tandikan Services</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+
+        <h2>Welcome Back 💗</h2>
+        <p class="subtitle">Login to continue</p>
+
+        <form id="login-form">
+
+            <div class="input-group">
+                <input type="email" id="login-email" required>
+                <label>Email</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="login-password" required>
+                <label>Password</label>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p class="switch">
+            Don’t have an account? <a href="signup.html">Sign Up</a>
+        </p>
+
+        <a href="../homepage/view.html" class="back-btn">← Back to Home</a>
+
+    </div>
+</div>
+
+<!-- Firebase/Auth JS -->
+<script type="module" src="auth.js"></script>
+
+</body>
+</html>
