@@ -1,3 +1,7 @@
+/* ================================= */
+/* GLOBAL */
+/* ================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,172 +9,212 @@
     font-family: Arial, sans-serif;
 }
 
-/* BODY */
 body {
-    background-color: #fff0f5; /* light pink background */
-    color: #333;
+    background: #f6fbfa;
+    color: #2d2d2d;
+    line-height: 1.6;
 }
 
-/* HEADER */
+/* ================================= */
+/* HEADER (PEACOCK SOFT GRADIENT) */
+/* ================================= */
+
 header {
-    background-color: #d63384; /* dark pink */
-    color: white;
-    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    padding: 15px 30px;
+
+    background: linear-gradient(
+        135deg,
+        #0b6e6b,
+        #2a9d8f,
+        #76c7c0
+    );
+
+    color: white;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-header h1 {
-    font-size: 24px;
-}
-
-/* NAVIGATION */
-nav ul {
-    list-style: none;
+/* LOGO */
+.logo-container {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-container img {
+    width: 50px;
+    height: 50px;
+}
+
+/* NAV */
+nav ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    align-items: center;
 }
 
 nav a {
-    text-decoration: none;
     color: white;
-    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
     transition: 0.3s;
 }
 
 nav a:hover {
-    color: #ffb3c6;
+    background: rgba(255,255,255,0.18);
 }
 
-/* HERO SECTION */
+/* LOGOUT */
+.logout-btn {
+    background: #0b6e6b;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: #095754;
+}
+
+/* ================================= */
+/* HERO (SOFT PEACOCK OVERLAY) */
+/* ================================= */
+
 .hero {
-    background: linear-gradient(rgba(255, 105, 135, 0.6), rgba(255, 182, 193, 0.6)),
-                url('https://images.unsplash.com/photo-1581578731548-c64695cc6952');
+    text-align: center;
+    padding: 110px 20px;
+
+    background:
+        linear-gradient(
+            rgba(11,110,107,0.55),
+            rgba(42,157,143,0.45)
+        ),
+        url("https://images.unsplash.com/photo-1581578731548-c64695cc6952");
+
     background-size: cover;
     background-position: center;
+
     color: white;
-    text-align: center;
-    padding: 80px 20px;
 }
 
 .hero h2 {
-    font-size: 36px;
+    font-size: 42px;
     margin-bottom: 10px;
 }
 
-/* SERVICES */
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    opacity: 0.95;
+}
+
+/* HERO BUTTONS */
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.book-btn {
+    background: linear-gradient(135deg, #0b6e6b, #2a9d8f);
+    padding: 12px 20px;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.book-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #095754, #238f83);
+}
+
+.secondary-btn {
+    background: rgba(255,255,255,0.15);
+    padding: 12px 20px;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: 0.3s;
+}
+
+.secondary-btn:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+/* ================================= */
+/* SERVICES (SOFT PEACOCK CARDS) */
+/* ================================= */
+
 .services {
-    padding: 40px 20px;
+    padding: 60px 20px;
     text-align: center;
 }
 
 .services h2 {
-    margin-bottom: 30px;
+    color: #0b6e6b;
+    margin-bottom: 40px;
+    font-size: 32px;
 }
 
-/* SERVICE CARDS */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
 .service-item {
     background: white;
-    margin: 15px auto;
-    padding: 20px;
-    max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 25px 15px;
+    border-radius: 14px;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+
     transition: 0.3s;
 }
 
 .service-item:hover {
-    transform: translateY(-5px);
-    background-color: #ffe4ec; /* pink hover */
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(11,110,107,0.15);
+    background: #f0fffd;
 }
 
-/* BOOK BUTTON */
-.book-container {
-    text-align: center;
-    margin: 40px 0;
+/* ================================= */
+/* RESPONSIVE */
+/* ================================= */
+
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
-.book-btn {
-    background-color: #ff4e8a;
-    color: white;
-    padding: 14px 28px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    display: inline-block;
-    transition: 0.3s;
-}
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
 
-.book-btn:hover {
-    background-color: #e8437a;
-    transform: scale(1.05);
-}
-
-/* CONTACT */
-.contact {
-    background-color: #ffd6e5;
-    padding: 30px;
-    text-align: center;
-}
-
-.contact a {
-    color: #d63384;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.contact a:hover {
-    color: #ff4e8a;
-}
-
-/* LOGO */
-
-/* LOGO CONTAINER */
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* LOGO IMAGE */
-.logo-container img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-}
-
-/* OPTIONAL: make text closer */
-.logo-container h1 {
-    font-size: 22px;
-}
-
-/* LOGIN BUTTON */
-
-nav ul li:last-child a {
-    background-color: #ff4e8a;
-    padding: 8px 14px;
-    border-radius: 6px;
-}
-
-nav ul li:last-child a:hover {
-    background-color: #e8437a;
-    color: white;
-}
-
-/* LOGOUT BUTTON */
-
-.logout-btn {
-    background-color: #ff4e8a;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.logout-btn:hover {
-    background-color: #e8437a;
+    .hero h2 {
+        font-size: 30px;
+    }
 }

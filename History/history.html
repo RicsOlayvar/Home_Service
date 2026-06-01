@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Booking History</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6fbfa;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #0b6e6b;
+            text-align: center;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #0b6e6b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #095754;
+        }
+
+        .list {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .status {
+            font-weight: bold;
+            color: #0b6e6b;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>📋 My Booking History</h1>
+
+<div class="search-box">
+    <input id="phoneSearch" placeholder="Enter phone number (optional)">
+    <button onclick="loadHistory()">Search</button>
+</div>
+
+<div id="historyList" class="list"></div>
+
+<!-- MODERN SCRIPT -->
+<script type="module" src="history.js"></script>
+
+</body>
+</html>

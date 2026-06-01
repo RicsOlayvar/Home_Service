@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book a Service</title>
 
-    <!-- FIXED PATH (since booking.html is in another folder) -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
+
 <body>
 
 <header>
@@ -15,52 +19,142 @@
 </header>
 
 <section class="booking-wrapper">
-    <div class="booking-card">
-        <h2>Book a Service</h2>
-        <p>Fill in the details below to schedule your service</p>
+<div class="booking-card">
 
-        <form>
-            <input type="text" placeholder="Full Name" required>
-            <input type="text" placeholder="Address" required>
+    <h2>Book a Service</h2>
+    <p>Fill in the details below to schedule your service.</p>
 
-            <!-- NEW: ICON SERVICE SELECTION -->
-            <div class="service-options">
+    <!-- BOOKING FORM -->
+    <form id="bookingForm">
 
-                <label class="service-card">
-                    <input type="radio" name="service" value="Cleaning" required>
-                    <div class="card-content">
-                        🧹
-                        <p>Cleaning</p>
-                    </div>
-                </label>
+        <!-- NAME -->
+        <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Full Name"
+            required
+        >
 
-                <label class="service-card">
-                    <input type="radio" name="service" value="Plumbing">
-                    <div class="card-content">
-                        🔧
-                        <p>Plumbing</p>
-                    </div>
-                </label>
+        <!-- PHONE -->
+        <input
+            type="tel"
+            name="phone"
+            id="phone"
+            placeholder="Mobile Number"
+            required
+            pattern="[0-9]{10,15}"
+        >
 
-                <label class="service-card">
-                    <input type="radio" name="service" value="Electrical">
-                    <div class="card-content">
-                        ⚡
-                        <p>Electrical</p>
-                    </div>
-                </label>
+        <!-- ADDRESS -->
+        <h3>📍 Service Location</h3>
 
-            </div>
+        <input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="Search address in Puerto Princesa..."
+            required
+        >
 
-            <input type="date" required>
+        <button type="button" id="searchAddress">
+            🔎 Search Location
+        </button>
 
-            <button type="submit">Confirm Booking</button>
-        </form>
+        <button type="button" id="currentLocation">
+            📍 Use My Current Location
+        </button>
 
-        <!-- FIXED BACK LINK -->
-        <a href="..\homepage\view.html" class="back-btn">← Back to Home</a>
-    </div>
+        <!-- MAP -->
+        <div id="map"></div>
+
+        <!-- COORDINATES -->
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+
+        <!-- SERVICE TYPE -->
+        <h3>Select a Service</h3>
+
+        <div class="service-options">
+
+            <label>
+                <input type="radio" name="service" value="Cleaning" required>
+                🧹 Cleaning
+            </label>
+
+            <label>
+                <input type="radio" name="service" value="Plumbing">
+                🔧 Plumbing
+            </label>
+
+            <label>
+                <input type="radio" name="service" value="Electrical">
+                ⚡ Electrical
+            </label>
+
+            <label>
+                <input type="radio" name="service" value="Gardening">
+                🌱 Gardening
+            </label>
+
+            <label>
+                <input type="radio" name="service" value="Painting">
+                🎨 Painting
+            </label>
+
+            <label>
+                <input type="radio" name="service" value="Appliance Repair">
+                🛠️ Appliance Repair
+            </label>
+
+            <label>
+                <input type="radio" name="service" value="Aircon Cleaning">
+                ❄️ Aircon Cleaning
+            </label>
+
+            <label>
+                <input type="radio" name="service" value="Carpentry">
+                🪚 Carpentry
+            </label>
+
+        </div>
+
+        <!-- DATE -->
+        <input
+            type="date"
+            name="date"
+            required
+        >
+
+        <!-- TIME -->
+        <input
+            type="time"
+            name="time"
+            required
+        >
+
+        <!-- SUBMIT -->
+        <button type="submit">
+            Confirm Booking
+        </button>
+
+    </form>
+
+    <a href="../homepage/view.html" class="back-btn">
+        ← Back to Home
+    </a>
+
+</div>
 </section>
-<script type="module" src="..\Authentication\auth.js"></script>
+
+<!-- MAP LIBRARY -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- YOUR MAP SCRIPT -->
+<script src="../Map/map.js"></script>
+
+<!-- BOOKING LOGIC -->
+<script type="module" src="booking.js"></script>
+
 </body>
 </html>
