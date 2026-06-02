@@ -119,9 +119,15 @@
 
         </div>
 
+        <h3>
+            Total Payment:
+            <span id="priceDisplay">₱0</span>
+        </h3>
+
         <!-- DATE -->
         <input
             type="date"
+            id="date"
             name="date"
             required
         >
@@ -129,9 +135,27 @@
         <!-- TIME -->
         <input
             type="time"
+            id="time"
             name="time"
             required
         >
+        <!-- PAYMENT METHOD -->
+        <h3>Payment Method</h3>
+
+        <label>
+            <input type="radio" name="paymentMethod" value="Cash" checked>
+            Cash on Service
+        </label>
+
+        <label>
+            <input type="radio" name="paymentMethod" value="GCash">
+            GCash
+        </label>
+
+        <label>
+            <input type="radio" name="paymentMethod" value="Bank Transfer">
+            Bank Transfer
+        </label>
 
         <!-- SUBMIT -->
         <button type="submit">

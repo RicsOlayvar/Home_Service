@@ -1,0 +1,151 @@
+/* ================================= */
+/* HISTORY PAGE STYLES */
+/* ================================= */
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e6f7f5, #f6fbfa);
+    padding: 20px;
+    color: #333;
+}
+
+/* TOP BAR */
+.top-bar {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: #0b6e6b;
+    margin-bottom: 10px;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: inline-block;
+    margin-top: 5px;
+    text-decoration: none;
+    color: #0b6e6b;
+    font-weight: bold;
+    padding: 8px 12px;
+    border: 2px solid #0b6e6b;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #0b6e6b;
+    color: white;
+}
+
+/* SEARCH BOX */
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 250px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #0b6e6b;
+    box-shadow: 0 0 0 3px rgba(11,110,107,0.1);
+}
+
+button {
+    padding: 10px 15px;
+    background: #0b6e6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #095754;
+    transform: translateY(-2px);
+}
+
+/* LIST */
+.list {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* BOOKING CARD */
+.card {
+    background: white;
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    border-left: 5px solid #0b6e6b;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    color: #0b6e6b;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin: 6px 0;
+}
+
+/* STATUS */
+.status {
+    font-weight: bold;
+    color: #555;
+}
+
+.paid {
+    color: green;
+    font-weight: bold;
+}
+
+.unpaid {
+    color: #e63946;
+    font-weight: bold;
+}
+
+/* PRICE */
+.price {
+    font-weight: bold;
+    color: #0b6e6b;
+}
+
+/* EMPTY STATE */
+.empty {
+    text-align: center;
+    color: #777;
+    margin-top: 30px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .search-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input {
+        width: 90%;
+    }
+
+    button {
+        width: 90%;
+    }
+}
