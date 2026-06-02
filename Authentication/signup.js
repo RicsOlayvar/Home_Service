@@ -27,7 +27,7 @@ function signup() {
 
     let users = getUsers();
 
-    // 🚫 prevent duplicate email
+    /* 🚫 prevent duplicate email */
     const exists = users.some(u => u.email === email);
 
     if (exists) {
@@ -35,7 +35,13 @@ function signup() {
         return;
     }
 
-    // 🚫 OPTIONAL SAFETY: block extra admin creation
+    /* =================================
+       ROLE SYSTEM
+       - admin (ONLY ONE)
+       - worker (can apply later)
+       - customer (default)
+    ================================= */
+
     const isAdminEmail = email.toLowerCase() === "admin@gmail.com";
 
     if (isAdminEmail) {
@@ -47,11 +53,17 @@ function signup() {
         }
     }
 
-    // default role = customer
     const newUser = {
         email,
         password,
-        role: isAdminEmail ? "admin" : "customer"
+
+        // role assignment
+        role: isAdminEmail ? "admin" : "user",
+
+        // worker support (future use)
+        isWorker: false,
+        skills: [],
+        available: false
     };
 
     users.push(newUser);
@@ -63,8 +75,7 @@ function signup() {
 }
 
 /* =================================
-   FIX: WAIT FOR DOM LOAD (IMPORTANT)
-   This fixes your "button does nothing"
+   FIX BUTTON ISSUE (SAFE BINDING)
 ================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -74,3 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", signup);
     }
 });
+
+/* =================================
+   OPTIONAL: MAKE GLOBAL ACCESS
+================================= */
+
+window.signup = signup;

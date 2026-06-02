@@ -20,24 +20,63 @@
 
     <nav>
         <ul>
-            <li><a href="view.html">Home</a></li>
-            <li><a href="../Services/service.html">Services</a></li>
-            <li><a href="../Bookings/booking.html">Book</a></li>
-            <li><a href="../History/history.html">My Bookings</a></li>
-
-            <!-- ADMIN (will be hidden if not admin) -->
-            <li id="admin-nav">
-                <a href="../Admin/admin.html">Admin</a>
-            </li>
-
-            <li><a href="mailto:tandikanservices@gmail.com">Contact</a></li>
-            <li><a href="../Authentication/login.html">Login</a></li>
-
-            <li><span id="user-info"></span></li>
 
             <li>
-                <button id="logout-btn" class="logout-btn">Logout</button>
+                <a href="view.html">Home</a>
             </li>
+
+            <li>
+                <a href="../Services/service.html">Services</a>
+            </li>
+
+            <li>
+                <a href="../Bookings/booking.html">Book</a>
+            </li>
+
+            <li>
+                <a href="../History/history.html">My Bookings</a>
+            </li>
+
+            <!-- ADMIN ONLY -->
+            <li id="admin-nav" style="display:none;">
+                <a href="../Admin/admin.html">Admin Panel</a>
+            </li>
+
+            <!-- WORKER ONLY -->
+            <li id="worker-nav" style="display:none;">
+                <a href="../Worker/worker-dashboard.html">
+                    Worker Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="mailto:tandikanservices@gmail.com">
+                    Contact
+                </a>
+            </li>
+
+            <!-- LOGIN -->
+            <li id="login-link">
+                <a href="../Authentication/login.html">
+                    Login
+                </a>
+            </li>
+
+            <!-- USER INFO -->
+            <li>
+                <span id="user-info"></span>
+            </li>
+
+            <!-- LOGOUT -->
+            <li>
+                <button
+                    id="logout-btn"
+                    class="logout-btn"
+                    style="display:none;">
+                    Logout
+                </button>
+            </li>
+
         </ul>
     </nav>
 
@@ -51,15 +90,43 @@
         <h2>Reliable Home Services</h2>
 
         <p>
-            Book trusted professionals for cleaning, plumbing, electrical work, and more.
+            Book trusted professionals for cleaning,
+            plumbing, electrical work, gardening,
+            aircon services, carpentry, and more.
         </p>
 
         <div class="hero-buttons">
 
-            <a href="../Bookings/booking.html" class="book-btn">Book Service</a>
-            <a href="../History/history.html" class="secondary-btn">My Bookings</a>
-            <a href="../Admin/admin.html" class="secondary-btn" id="admin-hero">
-            Admin Panel
+            <a href="../Bookings/booking.html"
+               class="book-btn">
+               Book Service
+            </a>
+
+            <a href="../History/history.html"
+               class="secondary-btn">
+               My Bookings
+            </a>
+
+            <!-- ADMIN ONLY -->
+            <a href="../Admin/admin.html"
+               id="admin-hero"
+               class="secondary-btn"
+               style="display:none;">
+               Admin Panel
+            </a>
+
+            <!-- WORKER ONLY -->
+            <a href="../Worker/worker-dashboard.html"
+               id="worker-hero"
+               class="secondary-btn"
+               style="display:none;">
+               Worker Dashboard
+            </a>
+
+            <!-- CUSTOMER -->
+            <a href="../WorkerApplication/apply-worker.html"
+               class="secondary-btn">
+               Apply as Worker
             </a>
 
         </div>
@@ -67,63 +134,87 @@
     </section>
 
     <!-- SERVICES -->
-<section class="services">
+    <section class="services">
 
-    <h2>Our Services</h2>
+        <h2>Our Services</h2>
 
-    <div class="services-grid">
+        <div class="services-grid">
 
-        <div class="service-item">
-            🧹
-            <h3>Cleaning</h3>
-            <p>Professional home and office cleaning services.</p>
+            <div class="service-item">
+                🧹
+                <h3>Cleaning</h3>
+                <p>
+                    Professional home and office
+                    cleaning services.
+                </p>
+            </div>
+
+            <div class="service-item">
+                🔧
+                <h3>Plumbing</h3>
+                <p>
+                    Expert pipe repair, leak fixing,
+                    and installations.
+                </p>
+            </div>
+
+            <div class="service-item">
+                ⚡
+                <h3>Electrical</h3>
+                <p>
+                    Safe electrical repairs,
+                    maintenance, and installations.
+                </p>
+            </div>
+
+            <div class="service-item">
+                🌱
+                <h3>Gardening</h3>
+                <p>
+                    Garden maintenance and
+                    landscaping services.
+                </p>
+            </div>
+
+            <div class="service-item">
+                🎨
+                <h3>Painting</h3>
+                <p>
+                    Interior and exterior painting
+                    with quality finishes.
+                </p>
+            </div>
+
+            <div class="service-item">
+                🛠️
+                <h3>Appliance Repair</h3>
+                <p>
+                    Fast appliance troubleshooting
+                    and repair services.
+                </p>
+            </div>
+
+            <div class="service-item">
+                ❄️
+                <h3>Aircon Cleaning</h3>
+                <p>
+                    Professional air conditioning
+                    cleaning and maintenance.
+                </p>
+            </div>
+
+            <div class="service-item">
+                🪚
+                <h3>Carpentry</h3>
+                <p>
+                    Furniture repairs, woodwork,
+                    and custom carpentry services.
+                </p>
+            </div>
+
         </div>
 
-        <div class="service-item">
-            🔧
-            <h3>Plumbing</h3>
-            <p>Expert pipe repair, leaks, and installation services.</p>
-        </div>
-
-        <div class="service-item">
-            ⚡
-            <h3>Electrical</h3>
-            <p>Safe wiring, repairs, and electrical installations.</p>
-        </div>
-
-        <div class="service-item">
-            🌱
-            <h3>Gardening</h3>
-            <p>Garden maintenance, trimming, and landscaping.</p>
-        </div>
-
-        <div class="service-item">
-            🎨
-            <h3>Painting</h3>
-            <p>Interior and exterior painting with clean finish.</p>
-        </div>
-
-        <div class="service-item">
-            🛠️
-            <h3>Repair</h3>
-            <p>General home repairs and maintenance services.</p>
-        </div>
-
-        <div class="service-item">
-            ❄️
-            <h3>Aircon</h3>
-            <p>Cleaning and servicing of air conditioning units.</p>
-        </div>
-
-        <div class="service-item">
-            🪚
-            <h3>Carpentry</h3>
-            <p>Custom woodwork, furniture, and home fixes.</p>
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 </main>
 

@@ -1,0 +1,118 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5fbfa;
+    padding:20px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #0b6e6b,
+        #2a9d8f
+    );
+
+    color:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.header button{
+    background:white;
+    color:#0b6e6b;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.container{
+    display:grid;
+    grid-template-columns:350px 1fr;
+    gap:20px;
+}
+
+.form-card,
+.worker-card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.form-card{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+input,
+select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.form-card button{
+    background:#0b6e6b;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#workerList{
+    display:grid;
+    gap:15px;
+}
+
+.actions{
+    margin-top:10px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.actions button{
+    border:none;
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.delete{
+    background:#dc3545;
+    color:white;
+}
+
+.available{
+    background:#198754;
+    color:white;
+}
+
+.busy{
+    background:#ffc107;
+}
+
+.leave{
+    background:#6c757d;
+    color:white;
+}
+
+@media(max-width:900px){
+
+    .container{
+        grid-template-columns:1fr;
+    }
+}

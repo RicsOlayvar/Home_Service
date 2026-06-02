@@ -1,0 +1,43 @@
+body {
+    font-family: Arial;
+    background: #f6fbfa;
+    margin: 0;
+}
+
+header {
+    background: linear-gradient(135deg, #0b6e6b, #2a9d8f);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+main {
+    padding: 20px;
+}
+
+.job-card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+button {
+    padding: 8px 12px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.done {
+    background: #2a9d8f;
+    color: white;
+}
+
+.cancel {
+    background: #e63946;
+    color: white;
+}

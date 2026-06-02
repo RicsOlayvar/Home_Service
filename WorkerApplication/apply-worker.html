@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply as Worker</title>
+
+    <link rel="stylesheet" href="apply-worker.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Worker Application</h1>
+
+        <p class="subtitle">
+            Apply to become a Tandikan Services Worker
+        </p>
+
+        <form id="workerForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Full Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Phone Number"
+                required
+            >
+
+            <select id="specialty" required>
+
+                <option value="">
+                    Select Service Specialty
+                </option>
+
+                <option>Cleaning</option>
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>Gardening</option>
+                <option>Painting</option>
+                <option>Appliance Repair</option>
+                <option>Aircon Cleaning</option>
+                <option>Carpentry</option>
+
+            </select>
+
+            <textarea
+                id="experience"
+                rows="5"
+                placeholder="Describe your experience..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Submit Application
+            </button>
+
+        </form>
+
+        <a href="../homepage/view.html" class="back-btn">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+<script src="apply-worker.js"></script>
+
+</body>
+</html>

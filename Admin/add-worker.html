@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Worker</title>
+</head>
+<body>
+
+<h2>Add Worker</h2>
+
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<input id="password" placeholder="Password">
+<input id="service" placeholder="Service (Cleaning, Plumbing, etc)">
+
+<button onclick="createWorker()">Add Worker</button>
+
+<script type="module">
+import { addWorker } from "../Workers/worker-auth.js";
+
+function createWorker() {
+
+    const worker = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+        service: document.getElementById("service").value,
+        role: "worker"
+    };
+
+    const result = addWorker(worker);
+
+    if (!result.success) {
+        alert(result.message);
+        return;
+    }
+
+    alert("Worker added!");
+}
+
+window.createWorker = createWorker;
+</script>
+
+</body>
+</html>

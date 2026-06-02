@@ -1,6 +1,6 @@
-/* ================================= */
-/* GLOBAL */
-/* ================================= */
+/* =================================
+   GLOBAL
+================================= */
 
 * {
     margin: 0;
@@ -15,15 +15,14 @@ body {
     line-height: 1.6;
 }
 
-/* ================================= */
-/* HEADER (PEACOCK SOFT GRADIENT) */
-/* ================================= */
+/* =================================
+   HEADER (PEACOCK THEME)
+================================= */
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 15px 30px;
 
     background: linear-gradient(
@@ -34,8 +33,11 @@ header {
     );
 
     color: white;
-
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 /* LOGO */
@@ -53,9 +55,10 @@ header {
 /* NAV */
 nav ul {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     list-style: none;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -63,14 +66,21 @@ nav a {
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 8px;
-    transition: 0.3s;
+    transition: 0.25s ease;
+    font-size: 14px;
 }
 
 nav a:hover {
     background: rgba(255,255,255,0.18);
 }
 
-/* LOGOUT */
+/* USER INFO */
+#user-info {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* LOGOUT BUTTON */
 .logout-btn {
     background: #0b6e6b;
     color: white;
@@ -79,15 +89,17 @@ nav a:hover {
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 13px;
 }
 
 .logout-btn:hover {
     background: #095754;
+    transform: translateY(-2px);
 }
 
-/* ================================= */
-/* HERO (SOFT PEACOCK OVERLAY) */
-/* ================================= */
+/* =================================
+   HERO SECTION
+================================= */
 
 .hero {
     text-align: center;
@@ -153,11 +165,12 @@ nav a:hover {
 
 .secondary-btn:hover {
     background: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
 }
 
-/* ================================= */
-/* SERVICES (SOFT PEACOCK CARDS) */
-/* ================================= */
+/* =================================
+   SERVICES
+================================= */
 
 .services {
     padding: 60px 20px;
@@ -185,36 +198,52 @@ nav a:hover {
 
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .service-item:hover {
     transform: translateY(-7px);
-    box-shadow: 0 12px 25px rgba(11,110,107,0.15);
+    box-shadow: 0 12px 25px rgba(11,110,107,0.18);
     background: #f0fffd;
 }
 
-/* ================================= */
-/* RESPONSIVE */
-/* ================================= */
+/* =================================
+   RESPONSIVE DESIGN
+================================= */
 
 @media (max-width: 900px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 
     header {
         flex-direction: column;
         gap: 10px;
+        text-align: center;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav ul {
+        justify-content: center;
     }
 }
 
 @media (max-width: 600px) {
+
     .services-grid {
         grid-template-columns: 1fr;
     }
 
     .hero h2 {
         font-size: 30px;
+    }
+
+    nav ul {
+        gap: 8px;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 6px 10px;
     }
 }

@@ -1,33 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Admin Dashboard</title>
 
     <link rel="stylesheet" href="admin.css">
 
-    <link rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- =================================
+     HEADER
+================================= -->
+
 <div class="header">
 
     <h1>📊 Admin Dashboard</h1>
 
-    <!-- BACK BUTTON -->
-    <button onclick="goHome()">⬅ Back to Home</button>
+    <button onclick="goHome()">
+        ⬅ Back to Home
+    </button>
 
 </div>
 
-<!-- FILTER -->
+<button onclick="goWorkers()">
+    👷 Manage Workers
+</button>
+
+<!-- =================================
+     FILTER
+================================= -->
+
 <div class="controls">
 
     <select id="filterService">
+
         <option value="All">All Services</option>
+
         <option value="Cleaning">Cleaning</option>
         <option value="Plumbing">Plumbing</option>
         <option value="Electrical">Electrical</option>
@@ -36,13 +55,19 @@
         <option value="Appliance Repair">Appliance Repair</option>
         <option value="Aircon Cleaning">Aircon Cleaning</option>
         <option value="Carpentry">Carpentry</option>
+
     </select>
 
-    <button onclick="loadBookings()">Filter</button>
+    <button onclick="loadBookings()">
+        Filter
+    </button>
 
 </div>
 
-<!-- DASHBOARD CARDS -->
+<!-- =================================
+     DASHBOARD CARDS
+================================= -->
+
 <div class="dashboard">
 
     <div class="card">
@@ -60,15 +85,64 @@
         <p id="completed">0</p>
     </div>
 
+    <div class="card">
+        <h3>Revenue</h3>
+        <p id="revenue">₱0</p>
+    </div>
+
+    <div class="card">
+        <h3>Workers</h3>
+        <p id="workersCount">0</p>
+    </div>
+
 </div>
 
-<!-- BOOKINGS -->
-<div id="bookingList"></div>
+<!-- =================================
+     WORKER APPLICATIONS
+================================= -->
 
-<!-- MAP -->
-<div id="map"></div>
+<section class="worker-section">
+
+    <h2>👷 Worker Applications</h2>
+
+    <div id="workerApplications">
+
+        <p>No applications yet.</p>
+
+    </div>
+
+</section>
+
+<!-- =================================
+     BOOKINGS
+================================= -->
+
+<section class="booking-section">
+
+    <h2>📋 Bookings</h2>
+
+    <div id="bookingList"></div>
+
+</section>
+
+<!-- =================================
+     MAP
+================================= -->
+
+<section class="map-section">
+
+    <h2>📍 Customer Location</h2>
+
+    <div id="map"></div>
+
+</section>
+
+<!-- =================================
+     SCRIPTS
+================================= -->
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script src="admin.js"></script>
 
 </body>

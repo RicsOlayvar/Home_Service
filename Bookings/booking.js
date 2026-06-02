@@ -3,9 +3,9 @@ import { addBooking } from "./storage.js";
 
 const form = document.getElementById("bookingForm");
 
-/* ================================= */
-/* SERVICE PRICES */
-/* ================================= */
+/* =================================
+   SERVICE PRICES
+================================= */
 
 const servicePrices = {
     "Cleaning": 500,
@@ -18,9 +18,9 @@ const servicePrices = {
     "Carpentry": 1000
 };
 
-/* ================================= */
-/* LIVE PRICE DISPLAY */
-/* ================================= */
+/* =================================
+   LIVE PRICE DISPLAY
+================================= */
 
 const serviceRadios = document.querySelectorAll("input[name='service']");
 
@@ -28,18 +28,16 @@ serviceRadios.forEach(radio => {
     radio.addEventListener("change", () => {
 
         const priceDisplay = document.getElementById("priceDisplay");
-
         if (!priceDisplay) return;
 
         const price = servicePrices[radio.value] || 0;
-
         priceDisplay.textContent = `₱${price}`;
     });
 });
 
-/* ================================= */
-/* FORM SUBMIT */
-/* ================================= */
+/* =================================
+   FORM SUBMIT
+================================= */
 
 if (form) {
 
@@ -48,9 +46,18 @@ if (form) {
 
         const user = getUser();
 
-        /* ----------------------------- */
-        /* SERVICE CHECK */
-        /* ----------------------------- */
+        /* -----------------------------
+           REQUIRE LOGIN
+        ----------------------------- */
+        if (!user) {
+            alert("Please login first!");
+            window.location.href = "../Authentication/login.html";
+            return;
+        }
+
+        /* -----------------------------
+           SERVICE CHECK
+        ----------------------------- */
         const selectedService = document.querySelector(
             "input[name='service']:checked"
         );
@@ -62,9 +69,9 @@ if (form) {
 
         const serviceName = selectedService.value;
 
-        /* ----------------------------- */
-        /* PAYMENT METHOD CHECK */
-        /* ----------------------------- */
+        /* -----------------------------
+           PAYMENT CHECK
+        ----------------------------- */
         const paymentMethodElement = document.querySelector(
             "input[name='paymentMethod']:checked"
         );
@@ -76,14 +83,15 @@ if (form) {
 
         const paymentMethod = paymentMethodElement.value;
 
-        /* ----------------------------- */
-        /* PRICE CALCULATION */
-        /* ----------------------------- */
+        /* -----------------------------
+           PRICE
+        ----------------------------- */
         const totalPrice = servicePrices[serviceName] || 0;
 
-        /* ----------------------------- */
-        /* BOOKING OBJECT */
-        /* ----------------------------- */
+        /* -----------------------------
+           BOOKING OBJECT
+           (🔥 UPDATED FOR WORKER SYSTEM)
+        ----------------------------- */
         const booking = {
             id: Date.now(),
 
@@ -91,52 +99,48 @@ if (form) {
             phone: document.getElementById("phone").value.trim(),
             address: document.getElementById("address").value.trim(),
 
-            latitude: document.getElementById("latitude").value,
-            longitude: document.getElementById("longitude").value,
+            latitude: document.getElementById("latitude").value || null,
+            longitude: document.getElementById("longitude").value || null,
 
             service: serviceName,
-
             totalPrice: totalPrice,
 
             paymentMethod: paymentMethod,
-
             paymentStatus: "Unpaid",
 
             date: document.getElementById("date").value,
             time: document.getElementById("time").value,
 
-            userEmail: user ? user.email : "guest",
+            userEmail: user.email,
 
             status: "Pending",
+
+            /* 🔥 IMPORTANT FOR ADMIN WORKER ASSIGN SYSTEM */
+            assignedWorker: null,
 
             createdAt: new Date().toISOString()
         };
 
-        /* ----------------------------- */
-        /* SAVE BOOKING */
-        /* ----------------------------- */
+        /* -----------------------------
+           SAVE BOOKING
+        ----------------------------- */
         addBooking(booking);
 
-        /* ----------------------------- */
-        /* SUCCESS MESSAGE */
-        /* ----------------------------- */
         alert(
             `Booking saved!\n\nService: ${serviceName}\nPayment: ${paymentMethod}\nTotal: ₱${totalPrice}`
         );
 
-        /* ----------------------------- */
-        /* RESET FORM */
-        /* ----------------------------- */
+        /* -----------------------------
+           RESET FORM
+        ----------------------------- */
         form.reset();
 
         const priceDisplay = document.getElementById("priceDisplay");
-        if (priceDisplay) {
-            priceDisplay.textContent = "₱0";
-        }
+        if (priceDisplay) priceDisplay.textContent = "₱0";
 
-        /* ----------------------------- */
-        /* REDIRECT */
-        /* ----------------------------- */
+        /* -----------------------------
+           REDIRECT
+        ----------------------------- */
         window.location.href = "../History/history.html";
     });
 }

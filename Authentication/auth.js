@@ -1,5 +1,3 @@
-// auth.js
-
 /* =================================
    USERS STORAGE
 ================================= */
@@ -26,32 +24,34 @@ export function logoutUser() {
 
 /* =================================
    REGISTER USER (SIGNUP)
-   - multiple customers allowed
-   - ONLY ONE admin allowed
-   - no duplicate emails
+   ROLES:
+   - admin (ONLY ONE)
+   - worker (optional)
+   - user (customer default)
 ================================= */
 
 export function registerUser(newUser) {
+
     const users = getUsers();
 
-    // Ensure role exists
+    // default role
     if (!newUser.role) {
         newUser.role = "user";
     }
 
-    // 🚫 Only ONE admin allowed
+    /* 🚫 ONLY ONE ADMIN */
     if (newUser.role === "admin") {
         const adminExists = users.some(u => u.role === "admin");
 
         if (adminExists) {
             return {
                 success: false,
-                message: "Admin account already exists!"
+                message: "Admin already exists!"
             };
         }
     }
 
-    // 🚫 Prevent duplicate email
+    /* 🚫 ONLY ONE EMAIL */
     const emailExists = users.some(
         u => u.email === newUser.email
     );
@@ -61,6 +61,13 @@ export function registerUser(newUser) {
             success: false,
             message: "Email already registered!"
         };
+    }
+
+    /* 👷 WORKER DEFAULT DATA */
+    if (newUser.role === "worker") {
+        newUser.available = true;
+        newUser.assignedJobs = [];
+        newUser.skills = newUser.skills || [];
     }
 
     users.push(newUser);
@@ -73,12 +80,11 @@ export function registerUser(newUser) {
 }
 
 /* =================================
-   LOGIN USER
-   - checks email + password
-   - stores session
+   LOGIN USER (ADMIN / USER / WORKER)
 ================================= */
 
 export function loginUser(email, password) {
+
     const users = getUsers();
 
     const user = users.find(
@@ -110,6 +116,11 @@ export function loginUser(email, password) {
 export function isAdmin() {
     const user = getUser();
     return user && user.role === "admin";
+}
+
+export function isWorker() {
+    const user = getUser();
+    return user && user.role === "worker";
 }
 
 export function isUser() {

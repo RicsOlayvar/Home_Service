@@ -2,42 +2,53 @@ import { getUser } from "./auth.js";
 
 const user = getUser();
 
-/* ================================= */
-/* ELEMENTS */
-/* ================================= */
+/* =================================
+   ELEMENTS
+================================= */
 
 const adminNav = document.getElementById("admin-nav");
 const userInfo = document.getElementById("user-info");
 const logoutBtn = document.getElementById("logout-btn");
 
-/* ================================= */
-/* IF USER LOGGED IN */
-/* ================================= */
+/* =================================
+   UI INIT
+================================= */
 
-if (user) {
+function initUI() {
 
-    // show username
-    if (userInfo) {
+    /* -----------------------------
+       USER INFO DISPLAY
+    ----------------------------- */
+    if (user && userInfo) {
         userInfo.textContent = `Hello, ${user.email}`;
     }
 
-    // SHOW ADMIN LINK ONLY FOR ADMIN
-    if (user.role === "admin") {
-        if (adminNav) adminNav.style.display = "inline-block";
-    } else {
-        if (adminNav) adminNav.style.display = "none";
+    /* -----------------------------
+       ADMIN NAV CONTROL
+    ----------------------------- */
+    if (adminNav) {
+        adminNav.style.display =
+            (user && user.role === "admin") ? "inline-block" : "none";
     }
 
-} else {
-    // no user
-    if (adminNav) adminNav.style.display = "none";
+    /* -----------------------------
+       ADMIN HERO CONTROL (optional section)
+    ----------------------------- */
+    const adminHero = document.getElementById("admin-hero");
+
+    if (adminHero) {
+        adminHero.style.display =
+            (user && user.role === "admin") ? "block" : "none";
+    }
 }
 
-/* ================================= */
-/* LOGOUT */
-/* ================================= */
+/* =================================
+   LOGOUT
+================================= */
 
-if (logoutBtn) {
+function setupLogout() {
+
+    if (!logoutBtn) return;
 
     logoutBtn.addEventListener("click", () => {
 
@@ -47,8 +58,9 @@ if (logoutBtn) {
     });
 }
 
-const adminHero = document.getElementById("admin-hero");
+/* =================================
+   INIT
+================================= */
 
-if (!user || user.role !== "admin") {
-    if (adminHero) adminHero.style.display = "none";
-}
+initUI();
+setupLogout();
