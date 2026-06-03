@@ -2,313 +2,440 @@
    GLOBAL
 ================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f6fbfa;
-    color: #333;
+body{
+    font-family:Arial, sans-serif;
+    background:#f6fbfa;
+    color:#333;
 }
 
 /* =================================
    HEADER
 ================================= */
 
-.header {
-    background: linear-gradient(
+.header{
+
+    background:linear-gradient(
         135deg,
         #0b6e6b,
         #2a9d8f
     );
 
-    color: white;
+    color:white;
 
-    padding: 20px 30px;
+    padding:20px 30px;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 
-.header h1 {
-    font-size: 28px;
+.header h1{
+    font-size:28px;
+    margin-bottom:5px;
 }
 
-.header button {
-    background: white;
-    color: #0b6e6b;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+.header p{
+    opacity:0.9;
+    font-size:14px;
 }
 
-.header button:hover {
-    background: #eafaf7;
+.header button{
+
+    background:white;
+
+    color:#0b6e6b;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.header button:hover{
+    background:#eafaf7;
 }
 
 /* =================================
    WORKER PROFILE
 ================================= */
 
-.worker-profile {
-    padding: 25px;
+.worker-profile{
+    padding:25px;
 }
 
-.worker-profile h2 {
-    margin-bottom: 15px;
-    color: #0b6e6b;
+.worker-profile h2{
+    color:#0b6e6b;
+    margin-bottom:15px;
 }
 
-.profile-card {
+.profile-card{
 
-    background: white;
+    background:white;
 
-    padding: 20px;
+    border-radius:15px;
 
-    border-radius: 15px;
+    padding:25px;
 
     box-shadow:
-        0 6px 18px rgba(0,0,0,0.08);
+        0 6px 18px rgba(0,0,0,.08);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
 }
 
-.profile-card p {
-    margin: 10px 0;
-    font-size: 16px;
+.profile-item{
+
+    background:#f7fffd;
+
+    border-left:5px solid #2a9d8f;
+
+    padding:15px;
+
+    border-radius:10px;
+}
+
+.profile-item strong{
+
+    display:block;
+
+    color:#0b6e6b;
+
+    margin-bottom:6px;
+}
+
+.profile-item span{
+
+    font-size:16px;
+
+    font-weight:bold;
 }
 
 /* =================================
-   DASHBOARD CARDS
+   DASHBOARD
 ================================= */
 
-.dashboard {
+.dashboard{
 
-    padding: 0 25px 25px;
+    padding:0 25px 25px;
 
-    display: grid;
+    display:grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(180px, 1fr));
+        repeat(auto-fit,minmax(180px,1fr));
 
-    gap: 20px;
+    gap:20px;
 }
 
-.card {
+.card{
 
-    background: white;
+    background:white;
 
-    padding: 25px;
+    border-radius:15px;
 
-    border-radius: 15px;
+    padding:25px;
 
-    text-align: center;
+    text-align:center;
 
     box-shadow:
-        0 6px 18px rgba(0,0,0,0.08);
+        0 6px 18px rgba(0,0,0,.08);
 
-    transition: 0.3s;
+    transition:.3s;
 }
 
-.card:hover {
+.card:hover{
 
-    transform: translateY(-5px);
+    transform:translateY(-5px);
 
     box-shadow:
-        0 10px 22px rgba(11,110,107,0.15);
+        0 10px 22px rgba(11,110,107,.15);
 }
 
-.card h3 {
+.card h3{
 
-    color: #0b6e6b;
+    color:#0b6e6b;
 
-    margin-bottom: 10px;
+    margin-bottom:10px;
 }
 
-.card p {
+.card p{
 
-    font-size: 28px;
+    font-size:30px;
 
-    font-weight: bold;
+    font-weight:bold;
 
-    color: #2a9d8f;
+    color:#2a9d8f;
+}
+
+/* =================================
+   PERFORMANCE SUMMARY
+================================= */
+
+.performance-section{
+    padding:0 25px 25px;
+}
+
+.performance-section h2{
+
+    color:#0b6e6b;
+
+    margin-bottom:15px;
+}
+
+.performance-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.08);
+}
+
+.performance-card p{
+    margin-bottom:15px;
+}
+
+.performance-card ul{
+    padding-left:20px;
+}
+
+.performance-card li{
+    margin-bottom:10px;
 }
 
 /* =================================
    JOBS SECTION
 ================================= */
 
-.jobs-section {
-    padding: 0 25px 30px;
+.jobs-section{
+    padding:0 25px 25px;
 }
 
-.jobs-section h2 {
+.jobs-section h2{
 
-    color: #0b6e6b;
+    color:#0b6e6b;
 
-    margin-bottom: 20px;
+    margin-bottom:20px;
 }
 
 /* =================================
    JOB CARD
 ================================= */
 
-.job-card {
+.job-card{
 
-    background: white;
+    background:white;
 
-    padding: 20px;
+    padding:20px;
 
-    margin-bottom: 20px;
+    margin-bottom:20px;
 
-    border-radius: 15px;
-
-    box-shadow:
-        0 6px 18px rgba(0,0,0,0.08);
-
-    transition: 0.3s;
-}
-
-.job-card:hover {
-
-    transform: translateY(-3px);
+    border-radius:15px;
 
     box-shadow:
-        0 10px 22px rgba(0,0,0,0.12);
+        0 6px 18px rgba(0,0,0,.08);
+
+    transition:.3s;
 }
 
-.job-card h3 {
+.job-card:hover{
 
-    color: #0b6e6b;
+    transform:translateY(-3px);
 
-    margin-bottom: 12px;
+    box-shadow:
+        0 10px 22px rgba(0,0,0,.12);
 }
 
-.job-card p {
+.job-card h3{
 
-    margin: 8px 0;
+    color:#0b6e6b;
+
+    margin-bottom:12px;
+}
+
+.job-card p{
+    margin:8px 0;
 }
 
 /* =================================
    ACTION BUTTONS
 ================================= */
 
-.job-actions {
+.job-actions{
 
-    margin-top: 15px;
+    margin-top:15px;
 
-    display: flex;
+    display:flex;
 
-    gap: 10px;
+    gap:10px;
 
-    flex-wrap: wrap;
+    flex-wrap:wrap;
 }
 
-.job-actions button {
+.job-actions button{
 
-    border: none;
+    border:none;
 
-    padding: 10px 16px;
+    padding:10px 16px;
 
-    border-radius: 8px;
+    border-radius:8px;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    font-weight: bold;
+    font-weight:bold;
 
-    transition: 0.3s;
+    transition:.3s;
 }
 
-.done {
+.done{
 
-    background: #2a9d8f;
+    background:#2a9d8f;
 
-    color: white;
+    color:white;
 }
 
-.done:hover {
-
-    background: #21867a;
+.done:hover{
+    background:#21867a;
 }
 
-.cancel {
+.cancel{
 
-    background: #e63946;
+    background:#e63946;
 
-    color: white;
+    color:white;
 }
 
-.cancel:hover {
-
-    background: #c62836;
+.cancel:hover{
+    background:#c62836;
 }
 
 /* =================================
    STATUS BADGES
 ================================= */
 
-.badge {
+.badge{
 
-    display: inline-block;
+    display:inline-block;
 
-    padding: 5px 10px;
+    padding:5px 10px;
 
-    border-radius: 20px;
+    border-radius:20px;
 
-    font-size: 13px;
+    font-size:13px;
 
-    font-weight: bold;
+    font-weight:bold;
 }
 
-.available {
-    background: #d8f3dc;
-    color: #2d6a4f;
+.available{
+    background:#d8f3dc;
+    color:#2d6a4f;
 }
 
-.busy {
-    background: #ffe5d9;
-    color: #bc4749;
+.busy{
+    background:#ffe5d9;
+    color:#bc4749;
 }
 
-.leave {
-    background: #fff3bf;
-    color: #99582a;
+.leave{
+    background:#fff3bf;
+    color:#99582a;
+}
+
+/* =================================
+   CHART SECTION
+================================= */
+
+.chart-section{
+    padding:0 25px 25px;
+}
+
+.chart-section h2{
+
+    color:#0b6e6b;
+
+    margin-bottom:15px;
+}
+
+.chart-placeholder{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.08);
+}
+
+/* =================================
+   FOOTER
+================================= */
+
+.footer{
+
+    background:#0b6e6b;
+
+    color:white;
+
+    text-align:center;
+
+    padding:18px;
+
+    margin-top:30px;
 }
 
 /* =================================
    RESPONSIVE
 ================================= */
 
-@media (max-width: 768px) {
+@media(max-width:768px){
 
-    .header {
+    .header{
 
-        flex-direction: column;
+        flex-direction:column;
 
-        gap: 15px;
+        gap:15px;
 
-        text-align: center;
+        text-align:center;
     }
 
-    .dashboard {
-
-        grid-template-columns: 1fr;
+    .dashboard{
+        grid-template-columns:1fr;
     }
 
-    .job-actions {
-
-        flex-direction: column;
+    .profile-card{
+        grid-template-columns:1fr;
     }
 
-    .job-actions button {
+    .job-actions{
+        flex-direction:column;
+    }
 
-        width: 100%;
+    .job-actions button{
+        width:100%;
     }
 }

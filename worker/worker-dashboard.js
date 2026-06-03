@@ -76,9 +76,41 @@ function updateDashboard() {
         document.getElementById("cancelledJobs");
 
     if (totalEl) totalEl.textContent = totalJobs;
-    if (assignedEl) assignedEl.textContent = assignedJobs;
-    if (completedEl) completedEl.textContent = completedJobs;
-    if (cancelledEl) cancelledEl.textContent = cancelledJobs;
+
+    if (assignedEl) assignedEl.textContent =
+        assignedJobs;
+
+    if (completedEl) completedEl.textContent =
+        completedJobs;
+
+    if (cancelledEl) cancelledEl.textContent =
+        cancelledJobs;
+
+    /* PERFORMANCE SUMMARY */
+
+    const summaryAssigned =
+        document.getElementById("summaryAssigned");
+
+    const summaryCompleted =
+        document.getElementById("summaryCompleted");
+
+    const summaryCancelled =
+        document.getElementById("summaryCancelled");
+
+    if (summaryAssigned) {
+        summaryAssigned.textContent =
+            assignedJobs;
+    }
+
+    if (summaryCompleted) {
+        summaryCompleted.textContent =
+            completedJobs;
+    }
+
+    if (summaryCancelled) {
+        summaryCancelled.textContent =
+            cancelledJobs;
+    }
 }
 
 /* =================================
@@ -205,6 +237,10 @@ function markDone(id) {
             if (assignedWorker) {
                 assignedWorker.availability =
                     "Available";
+                localStorage.setItem(
+                    "currentWorker",
+                    JSON.stringify(assignedWorker)
+                );
             }
         }
 
@@ -254,6 +290,10 @@ function cancelJob(id) {
             if (assignedWorker) {
                 assignedWorker.availability =
                     "Available";
+                localStorage.setItem(
+                    "currentWorker",
+                    JSON.stringify(assignedWorker)
+                );
             }
         }
 
@@ -289,8 +329,27 @@ function logout() {
 
 function loadWorkerInfo() {
 
+    const workers = getWorkers();
+
+    const currentWorker = workers.find(
+        w => w.email === worker.email
+    ) || worker;
+
+    const jobs = getBookings().filter(
+        b => b.assignedWorker === worker.email
+    );
+
+    const completedJobs = jobs.filter(
+        j =>
+            j.status === "Done" ||
+            j.status === "Completed"
+    ).length;
+
     const workerName =
         document.getElementById("workerName");
+
+    const workerEmail =
+        document.getElementById("workerEmail");
 
     const workerService =
         document.getElementById("workerService");
@@ -298,19 +357,42 @@ function loadWorkerInfo() {
     const workerAvailability =
         document.getElementById("workerAvailability");
 
+    const workerCompleted =
+        document.getElementById("workerCompleted");
+
     if (workerName) {
         workerName.textContent =
-            worker.name || worker.email;
+            currentWorker.name || currentWorker.email;
+    }
+
+    if (workerEmail) {
+        workerEmail.textContent =
+            currentWorker.email;
     }
 
     if (workerService) {
         workerService.textContent =
-            worker.specialty || "General";
+            currentWorker.specialty || "General";
     }
 
     if (workerAvailability) {
-        workerAvailability.textContent =
-            worker.availability || "Available";
+
+        workerAvailability.innerHTML = `
+            <span class="badge ${
+                currentWorker.availability === "Busy"
+                    ? "busy"
+                    : currentWorker.availability === "On Leave"
+                    ? "leave"
+                    : "available"
+            }">
+                ${currentWorker.availability || "Available"}
+            </span>
+        `;
+    }
+
+    if (workerCompleted) {
+        workerCompleted.textContent =
+            completedJobs;
     }
 }
 
@@ -329,6 +411,14 @@ window.logout = logout;
 loadWorkerInfo();
 loadJobs();
 updateDashboard();
+
+window.addEventListener("storage", () => {
+
+    loadWorkerInfo();
+    loadJobs();
+    updateDashboard();
+
+});
 
 /* =================================
    LIVE SYNC

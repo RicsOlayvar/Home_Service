@@ -27,7 +27,15 @@
 
 <header class="header">
 
-    <h1>👷 Worker Dashboard</h1>
+    <div>
+
+        <h1>👷 Worker Dashboard</h1>
+
+        <p>
+            Manage assigned jobs and track performance
+        </p>
+
+    </div>
 
     <button onclick="logout()">
         Logout
@@ -41,37 +49,66 @@
 
 <section class="worker-profile">
 
-    <h2>Worker Information</h2>
+    <h2>👤 Worker Profile</h2>
 
     <div class="profile-card">
 
-        <p>
-            <strong>Name:</strong>
+        <div class="profile-item">
+
+            <strong>Name</strong>
+
             <span id="workerName">
                 Loading...
             </span>
-        </p>
 
-        <p>
-            <strong>Specialty:</strong>
+        </div>
+
+        <div class="profile-item">
+
+            <strong>Email</strong>
+
+            <span id="workerEmail">
+                Loading...
+            </span>
+
+        </div>
+
+        <div class="profile-item">
+
+            <strong>Specialty</strong>
+
             <span id="workerService">
                 Loading...
             </span>
-        </p>
 
-        <p>
-            <strong>Status:</strong>
+        </div>
+
+        <div class="profile-item">
+
+            <strong>Availability</strong>
+
             <span id="workerAvailability">
                 Loading...
             </span>
-        </p>
+
+        </div>
+
+        <div class="profile-item">
+
+            <strong>Completed Jobs</strong>
+
+            <span id="workerCompleted">
+                0
+            </span>
+
+        </div>
 
     </div>
 
 </section>
 
 <!-- =================================
-     DASHBOARD STATS
+     DASHBOARD CARDS
 ================================= -->
 
 <section class="dashboard">
@@ -86,7 +123,7 @@
 
     <div class="card">
 
-        <h3>Assigned</h3>
+        <h3>Assigned Jobs</h3>
 
         <p id="assignedJobs">0</p>
 
@@ -94,7 +131,7 @@
 
     <div class="card">
 
-        <h3>Completed</h3>
+        <h3>Completed Jobs</h3>
 
         <p id="completedJobs">0</p>
 
@@ -102,9 +139,52 @@
 
     <div class="card">
 
-        <h3>Cancelled</h3>
+        <h3>Cancelled Jobs</h3>
 
         <p id="cancelledJobs">0</p>
+
+    </div>
+
+</section>
+
+<!-- =================================
+     PERFORMANCE SUMMARY
+================================= -->
+
+<section class="performance-section">
+
+    <h2>📈 Performance Summary</h2>
+
+    <div class="performance-card">
+
+        <p>
+            Track your completed services and assigned jobs.
+        </p>
+
+        <ul>
+
+            <li>
+                Total Assigned:
+                <strong id="summaryAssigned">
+                    0
+                </strong>
+            </li>
+
+            <li>
+                Total Completed:
+                <strong id="summaryCompleted">
+                    0
+                </strong>
+            </li>
+
+            <li>
+                Total Cancelled:
+                <strong id="summaryCancelled">
+                    0
+                </strong>
+            </li>
+
+        </ul>
 
     </div>
 
@@ -129,6 +209,36 @@
     </div>
 
 </section>
+
+<!-- =================================
+     FUTURE CHART AREA
+================================= -->
+
+<section class="chart-section">
+
+    <h2>📊 Worker Statistics</h2>
+
+    <div class="chart-placeholder">
+
+        <p>
+            Worker performance chart will appear here.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="footer">
+
+    <p>
+        Tandikan Services Worker Portal
+    </p>
+
+</footer>
 
 <!-- =================================
      SCRIPT
