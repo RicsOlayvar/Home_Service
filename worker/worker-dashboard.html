@@ -1,27 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Worker Dashboard</title>
-<link rel="stylesheet" href="worker-dashboard.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Worker Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="worker-dashboard.css"
+    >
+
 </head>
 
 <body>
 
-<header>
-    <h2>Worker Dashboard</h2>
+<!-- =================================
+     HEADER
+================================= -->
 
-    <button onclick="logout()">Logout</button>
+<header class="header">
+
+    <h1>👷 Worker Dashboard</h1>
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
 </header>
 
-<main>
+<!-- =================================
+     WORKER PROFILE
+================================= -->
 
-    <h3>Assigned Jobs</h3>
+<section class="worker-profile">
 
-    <div id="jobList"></div>
+    <h2>Worker Information</h2>
 
-</main>
+    <div class="profile-card">
 
-<script type="module" src="worker-dashboard.js"></script>
+        <p>
+            <strong>Name:</strong>
+            <span id="workerName">
+                Loading...
+            </span>
+        </p>
+
+        <p>
+            <strong>Specialty:</strong>
+            <span id="workerService">
+                Loading...
+            </span>
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            <span id="workerAvailability">
+                Loading...
+            </span>
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =================================
+     DASHBOARD STATS
+================================= -->
+
+<section class="dashboard">
+
+    <div class="card">
+
+        <h3>Total Jobs</h3>
+
+        <p id="totalJobs">0</p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Assigned</h3>
+
+        <p id="assignedJobs">0</p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Completed</h3>
+
+        <p id="completedJobs">0</p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Cancelled</h3>
+
+        <p id="cancelledJobs">0</p>
+
+    </div>
+
+</section>
+
+<!-- =================================
+     ASSIGNED JOBS
+================================= -->
+
+<section class="jobs-section">
+
+    <h2>📋 Assigned Jobs</h2>
+
+    <div id="jobList">
+
+        <div class="job-card">
+
+            <h3>Loading jobs...</h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =================================
+     SCRIPT
+================================= -->
+
+<script
+    type="module"
+    src="worker-dashboard.js"
+></script>
+
 </body>
+
 </html>

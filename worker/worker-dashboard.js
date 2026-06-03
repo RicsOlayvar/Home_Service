@@ -26,6 +26,17 @@ function saveBookings(bookings) {
     );
 }
 
+function getWorkers() {
+    return JSON.parse(localStorage.getItem("workers")) || [];
+}
+
+function saveWorkers(workers) {
+    localStorage.setItem(
+        "workers",
+        JSON.stringify(workers)
+    );
+}
+
 /* =================================
    DASHBOARD COUNTERS
 ================================= */
@@ -38,8 +49,8 @@ function updateDashboard() {
 
     const totalJobs = jobs.length;
 
-    const pendingJobs = jobs.filter(
-        j => j.status === "Pending"
+    const assignedJobs = jobs.filter(
+        j => j.status === "Assigned"
     ).length;
 
     const completedJobs = jobs.filter(
@@ -55,8 +66,8 @@ function updateDashboard() {
     const totalEl =
         document.getElementById("totalJobs");
 
-    const pendingEl =
-        document.getElementById("pendingJobs");
+    const assignedEl =
+        document.getElementById("assignedJobs");
 
     const completedEl =
         document.getElementById("completedJobs");
@@ -65,7 +76,7 @@ function updateDashboard() {
         document.getElementById("cancelledJobs");
 
     if (totalEl) totalEl.textContent = totalJobs;
-    if (pendingEl) pendingEl.textContent = pendingJobs;
+    if (assignedEl) assignedEl.textContent = assignedJobs;
     if (completedEl) completedEl.textContent = completedJobs;
     if (cancelledEl) cancelledEl.textContent = cancelledJobs;
 }
@@ -111,50 +122,49 @@ function loadJobs() {
 
             <p><b>Customer:</b> ${job.name}</p>
 
-            <p><b>Phone:</b> ${job.phone || "N/A"}</p>
+            <p><b>Phone:</b>
+                ${job.phone || "N/A"}
+            </p>
 
-            <p><b>Address:</b> ${job.address}</p>
+            <p><b>Address:</b>
+                ${job.address}
+            </p>
 
-            <p><b>Date:</b> ${job.date}</p>
+            <p><b>Date:</b>
+                ${job.date}
+            </p>
 
-            <p><b>Time:</b> ${job.time}</p>
+            <p><b>Time:</b>
+                ${job.time}
+            </p>
 
             <p><b>Payment:</b>
                 ${job.paymentStatus || "Unpaid"}
             </p>
 
             <p><b>Status:</b>
-                ${job.status || "Pending"}
+                ${job.status || "Assigned"}
             </p>
 
-            <p><b>Fee:</b>
+            <p><b>Service Fee:</b>
                 ₱${job.totalPrice || 0}
             </p>
 
             <div class="job-actions">
 
                 ${
-                    job.status !== "Done" &&
-                    job.status !== "Completed"
+                    job.status === "Assigned"
                     ? `
                     <button
                         class="done"
                         onclick="markDone(${job.id})">
-                        ✅ Done
+                        ✅ Complete Job
                     </button>
-                    `
-                    : ""
-                }
 
-                ${
-                    job.status !== "Cancelled" &&
-                    job.status !== "Done" &&
-                    job.status !== "Completed"
-                    ? `
                     <button
                         class="cancel"
                         onclick="cancelJob(${job.id})">
-                        ❌ Cancel
+                        ❌ Cancel Job
                     </button>
                     `
                     : ""
@@ -168,12 +178,13 @@ function loadJobs() {
 }
 
 /* =================================
-   MARK JOB DONE
+   COMPLETE JOB
 ================================= */
 
 function markDone(id) {
 
     let bookings = getBookings();
+    let workers = getWorkers();
 
     bookings = bookings.map(b => {
 
@@ -184,15 +195,26 @@ function markDone(id) {
             b.completedBy = worker.email;
 
             b.completedAt =
-                new Date().toISOString();
+                new Date().toLocaleString();
+
+            const assignedWorker =
+                workers.find(
+                    w => w.email === worker.email
+                );
+
+            if (assignedWorker) {
+                assignedWorker.availability =
+                    "Available";
+            }
         }
 
         return b;
     });
 
     saveBookings(bookings);
+    saveWorkers(workers);
 
-    alert("Job marked as completed.");
+    alert("Job completed successfully.");
 
     loadJobs();
     updateDashboard();
@@ -204,14 +226,14 @@ function markDone(id) {
 
 function cancelJob(id) {
 
-    const confirmCancel =
-        confirm(
-            "Are you sure you want to cancel this job?"
-        );
+    const confirmCancel = confirm(
+        "Are you sure you want to cancel this job?"
+    );
 
     if (!confirmCancel) return;
 
     let bookings = getBookings();
+    let workers = getWorkers();
 
     bookings = bookings.map(b => {
 
@@ -222,13 +244,24 @@ function cancelJob(id) {
             b.cancelledBy = worker.email;
 
             b.cancelledAt =
-                new Date().toISOString();
+                new Date().toLocaleString();
+
+            const assignedWorker =
+                workers.find(
+                    w => w.email === worker.email
+                );
+
+            if (assignedWorker) {
+                assignedWorker.availability =
+                    "Available";
+            }
         }
 
         return b;
     });
 
     saveBookings(bookings);
+    saveWorkers(workers);
 
     alert("Job cancelled.");
 
@@ -251,7 +284,7 @@ function logout() {
 }
 
 /* =================================
-   SHOW WORKER INFO
+   WORKER INFO
 ================================= */
 
 function loadWorkerInfo() {
@@ -262,14 +295,22 @@ function loadWorkerInfo() {
     const workerService =
         document.getElementById("workerService");
 
+    const workerAvailability =
+        document.getElementById("workerAvailability");
+
     if (workerName) {
         workerName.textContent =
-            worker.email;
+            worker.name || worker.email;
     }
 
     if (workerService) {
         workerService.textContent =
-            worker.service || "General Worker";
+            worker.specialty || "General";
+    }
+
+    if (workerAvailability) {
+        workerAvailability.textContent =
+            worker.availability || "Available";
     }
 }
 
@@ -294,6 +335,8 @@ updateDashboard();
 ================================= */
 
 window.addEventListener("storage", () => {
+
     loadJobs();
     updateDashboard();
+
 });

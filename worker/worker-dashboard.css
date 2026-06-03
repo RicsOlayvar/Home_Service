@@ -1,43 +1,314 @@
-body {
-    font-family: Arial;
-    background: #f6fbfa;
+/* =================================
+   GLOBAL
+================================= */
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-header {
-    background: linear-gradient(135deg, #0b6e6b, #2a9d8f);
+body {
+    font-family: Arial, sans-serif;
+    background: #f6fbfa;
+    color: #333;
+}
+
+/* =================================
+   HEADER
+================================= */
+
+.header {
+    background: linear-gradient(
+        135deg,
+        #0b6e6b,
+        #2a9d8f
+    );
+
     color: white;
-    padding: 15px;
+
+    padding: 20px 30px;
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-main {
-    padding: 20px;
+.header h1 {
+    font-size: 28px;
 }
+
+.header button {
+    background: white;
+    color: #0b6e6b;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.header button:hover {
+    background: #eafaf7;
+}
+
+/* =================================
+   WORKER PROFILE
+================================= */
+
+.worker-profile {
+    padding: 25px;
+}
+
+.worker-profile h2 {
+    margin-bottom: 15px;
+    color: #0b6e6b;
+}
+
+.profile-card {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,0.08);
+}
+
+.profile-card p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* =================================
+   DASHBOARD CARDS
+================================= */
+
+.dashboard {
+
+    padding: 0 25px 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 20px;
+}
+
+.card {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 22px rgba(11,110,107,0.15);
+}
+
+.card h3 {
+
+    color: #0b6e6b;
+
+    margin-bottom: 10px;
+}
+
+.card p {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #2a9d8f;
+}
+
+/* =================================
+   JOBS SECTION
+================================= */
+
+.jobs-section {
+    padding: 0 25px 30px;
+}
+
+.jobs-section h2 {
+
+    color: #0b6e6b;
+
+    margin-bottom: 20px;
+}
+
+/* =================================
+   JOB CARD
+================================= */
 
 .job-card {
+
     background: white;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
 }
 
-button {
-    padding: 8px 12px;
-    margin-right: 8px;
+.job-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 22px rgba(0,0,0,0.12);
+}
+
+.job-card h3 {
+
+    color: #0b6e6b;
+
+    margin-bottom: 12px;
+}
+
+.job-card p {
+
+    margin: 8px 0;
+}
+
+/* =================================
+   ACTION BUTTONS
+================================= */
+
+.job-actions {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.job-actions button {
+
     border: none;
-    border-radius: 6px;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
     cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
 }
 
 .done {
+
     background: #2a9d8f;
+
     color: white;
 }
 
+.done:hover {
+
+    background: #21867a;
+}
+
 .cancel {
+
     background: #e63946;
+
     color: white;
+}
+
+.cancel:hover {
+
+    background: #c62836;
+}
+
+/* =================================
+   STATUS BADGES
+================================= */
+
+.badge {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.available {
+    background: #d8f3dc;
+    color: #2d6a4f;
+}
+
+.busy {
+    background: #ffe5d9;
+    color: #bc4749;
+}
+
+.leave {
+    background: #fff3bf;
+    color: #99582a;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 768px) {
+
+    .header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        text-align: center;
+    }
+
+    .dashboard {
+
+        grid-template-columns: 1fr;
+    }
+
+    .job-actions {
+
+        flex-direction: column;
+    }
+
+    .job-actions button {
+
+        width: 100%;
+    }
 }

@@ -117,11 +117,16 @@ function loadBookings() {
     w.availability === "Available"
 );
 
+
         const workerOptions =
             availableWorkers.map(w => `
                 <option
                     value="${w.email}"
-                    ${b.assignedWorker === w.email ? "selected" : ""}
+                    ${
+                        b.assignedWorker === w.email
+                        ? "selected"
+                        : ""
+                    }
                 >
                     ${w.name}
                     (${w.availability})
@@ -145,7 +150,11 @@ function loadBookings() {
 
             <p>
                 <b>Worker:</b>
-                ${b.assignedWorker || "Not Assigned"}
+                ${
+                    workers.find(
+                        w => w.email === b.assignedWorker
+                    )?.name || "Not Assigned"
+                }
             </p>
 
             <p>
@@ -203,9 +212,7 @@ function loadBookings() {
 
 function assignWorker(id) {
 
-    const select =
-        document.getElementById(`worker-${id}`);
-
+    const select = document.getElementById(`worker-${id}`);
     const workerEmail = select.value;
 
     if (!workerEmail) {
@@ -214,25 +221,34 @@ function assignWorker(id) {
     }
 
     let bookings = getBookings();
+    let workers = getWorkers();
 
     bookings = bookings.map(b => {
 
         if (b.id === id) {
 
-            b.assignedWorker =
-                workerEmail;
-
+            b.assignedWorker = workerEmail;
             b.status = "Assigned";
+
+            const worker = workers.find(
+                w => w.email === workerEmail
+            );
+
+            if (worker) {
+                worker.availability = "Busy";
+            }
         }
 
         return b;
     });
 
     saveBookings(bookings);
+    saveWorkers(workers);
 
-    alert("Worker assigned.");
+    alert("Worker assigned successfully!");
 
     loadBookings();
+    updateDashboard();
 }
 
 window.assignWorker = assignWorker;
@@ -269,17 +285,31 @@ window.markPaid = markPaid;
 function markDone(id) {
 
     let bookings = getBookings();
+    let workers = getWorkers();
 
     bookings = bookings.map(b => {
 
         if (b.id === id) {
+
             b.status = "Done";
+
+            if (b.assignedWorker) {
+
+                const worker = workers.find(
+                    w => w.email === b.assignedWorker
+                );
+
+                if (worker) {
+                    worker.availability = "Available";
+                }
+            }
         }
 
         return b;
     });
 
     saveBookings(bookings);
+    saveWorkers(workers);
 
     loadBookings();
     updateDashboard();
@@ -492,7 +522,9 @@ function updateDashboard() {
             0
         );
 
-    const workersCount = workers.length;
+    const workersCount = workers.filter(
+        w => w.availability === "Available"
+    ).length;
 
     document.getElementById("total").textContent =
         total;
