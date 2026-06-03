@@ -1,68 +1,241 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f766e, #468faf, #95d5b2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+/* =================================
+   GLOBAL
+================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.container {
-    background: rgba(255,255,255,0.92);
-    padding: 28px;
-    border-radius: 14px;
-    width: 320px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(
+        135deg,
+        #0f766e,
+        #468faf,
+        #95d5b2
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+    padding:20px;
 }
 
-h2 {
-    text-align: center;
-    color: #0f766e;
+/* =================================
+   LOGIN CONTAINER
+================================= */
+
+.container{
+
+    background:rgba(255,255,255,0.95);
+
+    width:100%;
+    max-width:400px;
+
+    padding:30px;
+
+    border-radius:16px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.15);
+
+    backdrop-filter:blur(10px);
 }
 
-input {
-    width: 100%;
-    padding: 11px;
-    margin: 10px 0;
-    border: 1px solid #cce3e3;
-    border-radius: 8px;
-    outline: none;
+/* =================================
+   TITLE
+================================= */
+
+h2{
+
+    text-align:center;
+
+    color:#0f766e;
+
+    margin-bottom:20px;
+
+    font-size:28px;
 }
 
-input:focus {
-    border-color: #468faf;
+/* =================================
+   INPUTS
+================================= */
+
+input{
+
+    width:100%;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border:1px solid #cce3e3;
+
+    border-radius:8px;
+
+    outline:none;
+
+    font-size:14px;
+
+    transition:0.3s;
 }
 
-button {
-    width: 100%;
-    padding: 11px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #0f766e, #468faf);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+input:focus{
+
+    border-color:#468faf;
+
+    box-shadow:
+        0 0 0 3px rgba(70,143,175,0.15);
 }
 
-button:hover {
-    opacity: 0.9;
+/* =================================
+   LOGIN BUTTON
+================================= */
+
+button{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:linear-gradient(
+        135deg,
+        #0f766e,
+        #468faf
+    );
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
 }
 
-.switch {
-    text-align: center;
-    margin-top: 12px;
-    font-size: 14px;
-    color: #333;
+button:hover{
+
+    transform:translateY(-2px);
+
+    opacity:0.95;
 }
 
-.switch a {
-    color: #0f766e;
-    font-weight: bold;
-    text-decoration: none;
+/* =================================
+   REGISTER LINK
+================================= */
+
+.switch{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    font-size:14px;
+
+    color:#333;
 }
 
-.switch a:hover {
-    text-decoration: underline;
+.switch a{
+
+    color:#0f766e;
+
+    font-weight:bold;
+
+    text-decoration:none;
+}
+
+.switch a:hover{
+
+    text-decoration:underline;
+}
+
+/* =================================
+   WORKER LOGIN SECTION
+================================= */
+
+.worker-login-section{
+
+    margin-top:20px;
+
+    padding-top:20px;
+
+    border-top:1px solid #e5e5e5;
+
+    text-align:center;
+}
+
+.worker-login-section p{
+
+    margin-bottom:12px;
+
+    color:#555;
+
+    font-size:14px;
+}
+
+/* =================================
+   WORKER LOGIN BUTTON
+================================= */
+
+.worker-btn{
+
+    display:block;
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #2a9d8f,
+        #52b788
+    );
+
+    transition:0.3s;
+}
+
+.worker-btn:hover{
+
+    background:linear-gradient(
+        135deg,
+        #21867a,
+        #40916c
+    );
+
+    transform:translateY(-2px);
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media(max-width:480px){
+
+    .container{
+
+        padding:25px 20px;
+    }
+
+    h2{
+
+        font-size:24px;
+    }
 }

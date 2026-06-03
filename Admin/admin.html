@@ -4,7 +4,11 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Admin Dashboard</title>
 
@@ -23,38 +27,106 @@
      HEADER
 ================================= -->
 
-<div class="header">
+<header class="header">
 
-    <h1>📊 Admin Dashboard</h1>
+    <div>
 
-    <button onclick="goHome()">
-        ⬅ Back to Home
-    </button>
+        <h1>📊 Admin Dashboard</h1>
 
-</div>
+        <p>
+            Manage bookings, workers, and applications
+        </p>
 
-<button onclick="goWorkers()">
-    👷 Manage Workers
-</button>
+    </div>
+
+    <div class="header-actions">
+
+        <button onclick="goWorkers()">
+            👷 Manage Workers
+        </button>
+
+        <button onclick="goHome()">
+            ⬅ Back to Home
+        </button>
+
+    </div>
+
+</header>
 
 <!-- =================================
-     FILTER
+     SEARCH AREA
+================================= -->
+
+<section class="search-section">
+
+    <h2>🔎 Search Bookings</h2>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by customer name, phone, or service"
+        >
+
+        <button onclick="loadBookings()">
+            Search
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =================================
+     FILTERS
 ================================= -->
 
 <div class="controls">
 
+    <input
+        type="text"
+        id="searchBooking"
+        placeholder="Search name, phone, service..."
+        onkeyup="loadBookings()"
+    >
+
     <select id="filterService">
 
-        <option value="All">All Services</option>
+        <option value="All">
+            All Services
+        </option>
 
-        <option value="Cleaning">Cleaning</option>
-        <option value="Plumbing">Plumbing</option>
-        <option value="Electrical">Electrical</option>
-        <option value="Gardening">Gardening</option>
-        <option value="Painting">Painting</option>
-        <option value="Appliance Repair">Appliance Repair</option>
-        <option value="Aircon Cleaning">Aircon Cleaning</option>
-        <option value="Carpentry">Carpentry</option>
+        <option value="Cleaning">
+            Cleaning
+        </option>
+
+        <option value="Plumbing">
+            Plumbing
+        </option>
+
+        <option value="Electrical">
+            Electrical
+        </option>
+
+        <option value="Gardening">
+            Gardening
+        </option>
+
+        <option value="Painting">
+            Painting
+        </option>
+
+        <option value="Appliance Repair">
+            Appliance Repair
+        </option>
+
+        <option value="Aircon Cleaning">
+            Aircon Cleaning
+        </option>
+
+        <option value="Carpentry">
+            Carpentry
+        </option>
 
     </select>
 
@@ -65,37 +137,94 @@
 </div>
 
 <!-- =================================
-     DASHBOARD CARDS
+     DASHBOARD STATS
 ================================= -->
 
-<div class="dashboard">
+<section class="dashboard">
 
     <div class="card">
+
         <h3>Total Bookings</h3>
+
         <p id="total">0</p>
+
     </div>
 
     <div class="card">
+
         <h3>Pending</h3>
+
         <p id="pending">0</p>
+
     </div>
 
     <div class="card">
+
         <h3>Completed</h3>
+
         <p id="completed">0</p>
+
     </div>
 
     <div class="card">
+
         <h3>Revenue</h3>
+
         <p id="revenue">₱0</p>
+
     </div>
 
     <div class="card">
+
         <h3>Workers</h3>
+
         <p id="workersCount">0</p>
+
     </div>
 
-</div>
+</section>
+
+<!-- =================================
+     DASHBOARD CHARTS
+================================= -->
+
+<section class="chart-section">
+
+    <h2>📈 Booking Statistics</h2>
+
+    <div class="chart-placeholder">
+
+        <p>
+            Booking Status Chart
+        </p>
+
+        <ul>
+
+            <li>
+                Pending:
+                <span id="chartPending">0</span>
+            </li>
+
+            <li>
+                Assigned:
+                <span id="chartAssigned">0</span>
+            </li>
+
+            <li>
+                Done:
+                <span id="chartDone">0</span>
+            </li>
+
+            <li>
+                Cancelled:
+                <span id="chartCancelled">0</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
 
 <!-- =================================
      WORKER APPLICATIONS
@@ -107,7 +236,9 @@
 
     <div id="workerApplications">
 
-        <p>No applications yet.</p>
+        <p>
+            No applications yet.
+        </p>
 
     </div>
 
@@ -121,7 +252,13 @@
 
     <h2>📋 Bookings</h2>
 
-    <div id="bookingList"></div>
+    <div id="bookingList">
+
+        <p>
+            Loading bookings...
+        </p>
+
+    </div>
 
 </section>
 
@@ -138,10 +275,24 @@
 </section>
 
 <!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="footer">
+
+    <p>
+        Tandikan Services Admin Portal
+    </p>
+
+</footer>
+
+<!-- =================================
      SCRIPTS
 ================================= -->
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
 
 <script src="admin.js"></script>
 

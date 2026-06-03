@@ -82,7 +82,7 @@ function login() {
 
         case "worker":
             window.location.href =
-                "../Worker/worker-dashboard.html";
+                "../worker/worker-dashboard.html";
             break;
 
         case "customer":

@@ -19,7 +19,7 @@ function login() {
 
     alert("Login successful!");
 
-    window.location.href = "worker-dashboard.html";
+    window.location.href = "../worker/worker-dashboard.html";
 }
 
 window.loginWorker = login;

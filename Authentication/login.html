@@ -1,28 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Login</title>
-    <link rel="stylesheet" href="login.css">
+
+    <link
+        rel="stylesheet"
+        href="login.css"
+    >
+
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Login</h2>
+    <div class="container">
 
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
+        <h2>🔐 User Login</h2>
 
-    <button onclick="login()">Login</button>
+        <input
+            type="email"
+            id="email"
+            placeholder="Email"
+        >
 
-    <p class="switch">
-        Don't have an account?
-        <a href="signup.html">Sign up</a>
-    </p>
-</div>
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
 
-<script src="login.js"></script>
+        <button onclick="login()">
+            Login
+        </button>
+
+        <p class="switch">
+
+            Don't have an account?
+
+            <a href="signup.html">
+                Sign Up
+            </a>
+
+        </p>
+
+        <!-- =========================
+             WORKER LOGIN SECTION
+        ========================== -->
+
+        <div class="worker-login-section">
+
+            <p>
+                Are you a worker?
+            </p>
+
+            <a
+                href="worker-login.html"
+                class="worker-btn"
+            >
+                👷 Login as Worker
+            </a>
+
+        </div>
+
+    </div>
+
+    <script src="login.js"></script>
 
 </body>
+
 </html>

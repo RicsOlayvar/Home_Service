@@ -87,9 +87,26 @@ function loadBookings() {
 
     let bookings = getBookings();
 
-    const filter =
-        document.getElementById("filterService")
-        ?.value || "All";
+const filter =
+    document.getElementById("filterService")
+    ?.value || "All";
+
+const search =
+    document.getElementById("searchBooking")
+    ?.value
+    ?.toLowerCase() || "";
+
+if (search) {
+
+    bookings = bookings.filter(b =>
+
+        b.name?.toLowerCase().includes(search) ||
+
+        b.phone?.toLowerCase().includes(search) ||
+
+        b.service?.toLowerCase().includes(search)
+    );
+}
 
     if (filter !== "All") {
         bookings = bookings.filter(
@@ -149,6 +166,15 @@ function loadBookings() {
             <p><b>Address:</b> ${b.address}</p>
 
             <p>
+                <b>Created:</b>
+                ${
+                    b.createdAt
+                    ? new Date(b.createdAt).toLocaleDateString()
+                    : "N/A"
+                }
+            </p>
+
+            <p>
                 <b>Worker:</b>
                 ${
                     workers.find(
@@ -159,12 +185,26 @@ function loadBookings() {
 
             <p>
                 <b>Payment:</b>
-                ${b.paymentStatus || "Unpaid"}
+
+                <span class="badge ${String(
+                    b.paymentStatus || "Unpaid"
+                ).toLowerCase()}">
+
+                    ${b.paymentStatus || "Unpaid"}
+
+                </span>
             </p>
 
             <p>
                 <b>Status:</b>
-                ${b.status || "Pending"}
+
+                <span class="badge ${String(
+                    b.status || "Pending"
+                ).toLowerCase()}">
+
+                    ${b.status || "Pending"}
+
+                </span>
             </p>
 
             <p>
@@ -506,25 +546,28 @@ function updateDashboard() {
 
     const total = bookings.length;
 
-    const pending =
-        bookings.filter(
-            b => b.status === "Pending"
-        ).length;
-
-    const completed =
-        bookings.filter(
-            b => b.status === "Done"
-        ).length;
-
-    const revenue =
-        bookings.reduce(
-            (sum, b) => sum + (b.totalPrice || 0),
-            0
-        );
-
-    const workersCount = workers.filter(
-        w => w.availability === "Available"
+    const pending = bookings.filter(
+        b => b.status === "Pending"
     ).length;
+
+    const assigned = bookings.filter(
+        b => b.status === "Assigned"
+    ).length;
+
+    const completed = bookings.filter(
+        b => b.status === "Done"
+    ).length;
+
+    const cancelled = bookings.filter(
+        b => b.status === "Cancelled"
+    ).length;
+
+    const revenue = bookings.reduce(
+        (sum, b) => sum + (b.totalPrice || 0),
+        0
+    );
+
+    const workersCount = workers.length;
 
     document.getElementById("total").textContent =
         total;
@@ -540,6 +583,32 @@ function updateDashboard() {
 
     document.getElementById("workersCount").textContent =
         workersCount;
+
+    /* CHART DATA */
+
+    const chartPending =
+        document.getElementById("chartPending");
+
+    const chartAssigned =
+        document.getElementById("chartAssigned");
+
+    const chartDone =
+        document.getElementById("chartDone");
+
+    const chartCancelled =
+        document.getElementById("chartCancelled");
+
+    if (chartPending)
+        chartPending.textContent = pending;
+
+    if (chartAssigned)
+        chartAssigned.textContent = assigned;
+
+    if (chartDone)
+        chartDone.textContent = completed;
+
+    if (chartCancelled)
+        chartCancelled.textContent = cancelled;
 }
 
 function goWorkers() {
@@ -556,6 +625,28 @@ window.goWorkers = goWorkers;
 window.changeFilter = function () {
     loadBookings();
 };
+
+/* =================================
+   CHART DATA
+================================= */
+
+function generateChartData() {
+
+    const bookings = getBookings();
+
+    const services = {};
+
+    bookings.forEach(b => {
+
+        services[b.service] =
+            (services[b.service] || 0) + 1;
+    });
+
+    console.log("Chart Data:", services);
+
+    return services;
+}
+
 
 /* =================================
    INIT

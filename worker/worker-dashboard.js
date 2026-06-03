@@ -1,4 +1,7 @@
-import { getWorker, logoutWorker } from "./worker-auth.js";
+import {
+    getWorker,
+    logoutWorker
+} from "../Authentication/worker-auth.js";
 
 /* =================================
    AUTH CHECK
@@ -6,9 +9,16 @@ import { getWorker, logoutWorker } from "./worker-auth.js";
 
 const worker = getWorker();
 
+console.log("Current Worker:", worker);
+
 if (!worker) {
+
     alert("Please login first!");
-    window.location.href = "worker-login.html";
+
+    window.location.href =
+        "../Authentication/worker-login.html";
+
+    throw new Error("Worker not logged in");
 }
 
 /* =================================
@@ -315,6 +325,8 @@ function cancelJob(id) {
 
 function logout() {
 
+    localStorage.removeItem("currentWorker");
+
     logoutWorker();
 
     alert("Logged out successfully.");
@@ -331,12 +343,13 @@ function loadWorkerInfo() {
 
     const workers = getWorkers();
 
-    const currentWorker = workers.find(
-        w => w.email === worker.email
-    ) || worker;
+    const currentWorker =
+        workers.find(
+            w => w.email === worker.email
+        ) || worker;
 
     const jobs = getBookings().filter(
-        b => b.assignedWorker === worker.email
+        b => b.assignedWorker === currentWorker.email
     );
 
     const completedJobs = jobs.filter(
@@ -345,55 +358,41 @@ function loadWorkerInfo() {
             j.status === "Completed"
     ).length;
 
-    const workerName =
-        document.getElementById("workerName");
+    document.getElementById("workerName").textContent =
+        currentWorker.name ||
+        "Unknown Worker";
 
-    const workerEmail =
-        document.getElementById("workerEmail");
+    document.getElementById("workerEmail").textContent =
+        currentWorker.email ||
+        "No Email";
 
-    const workerService =
-        document.getElementById("workerService");
+    document.getElementById("workerService").textContent =
+        currentWorker.specialty ||
+        "General Worker";
 
-    const workerAvailability =
-        document.getElementById("workerAvailability");
+    document.getElementById("workerCompleted").textContent =
+        completedJobs;
 
-    const workerCompleted =
-        document.getElementById("workerCompleted");
+    const availability =
+        currentWorker.availability ||
+        "Available";
 
-    if (workerName) {
-        workerName.textContent =
-            currentWorker.name || currentWorker.email;
-    }
+    document.getElementById(
+        "workerAvailability"
+    ).innerHTML = `
 
-    if (workerEmail) {
-        workerEmail.textContent =
-            currentWorker.email;
-    }
+        <span class="badge ${
+            availability === "Busy"
+                ? "busy"
+                : availability === "On Leave"
+                ? "leave"
+                : "available"
+        }">
 
-    if (workerService) {
-        workerService.textContent =
-            currentWorker.specialty || "General";
-    }
+            ${availability}
 
-    if (workerAvailability) {
-
-        workerAvailability.innerHTML = `
-            <span class="badge ${
-                currentWorker.availability === "Busy"
-                    ? "busy"
-                    : currentWorker.availability === "On Leave"
-                    ? "leave"
-                    : "available"
-            }">
-                ${currentWorker.availability || "Available"}
-            </span>
-        `;
-    }
-
-    if (workerCompleted) {
-        workerCompleted.textContent =
-            completedJobs;
-    }
+        </span>
+    `;
 }
 
 /* =================================

@@ -89,8 +89,7 @@ if (form) {
         const totalPrice = servicePrices[serviceName] || 0;
 
         /* -----------------------------
-           BOOKING OBJECT
-           (🔥 UPDATED FOR WORKER SYSTEM)
+              CREATE BOOKING OBJECT
         ----------------------------- */
         const booking = {
             id: Date.now(),
@@ -99,23 +98,32 @@ if (form) {
             phone: document.getElementById("phone").value.trim(),
             address: document.getElementById("address").value.trim(),
 
-            latitude: document.getElementById("latitude").value || null,
-            longitude: document.getElementById("longitude").value || null,
+            latitude:
+                parseFloat(
+                    document.getElementById("latitude").value
+                ) || null,
+
+            longitude:
+                parseFloat(
+                    document.getElementById("longitude").value
+                ) || null,
 
             service: serviceName,
+
             totalPrice: totalPrice,
 
             paymentMethod: paymentMethod,
+
             paymentStatus: "Unpaid",
 
             date: document.getElementById("date").value,
+
             time: document.getElementById("time").value,
 
             userEmail: user.email,
 
             status: "Pending",
 
-            /* 🔥 IMPORTANT FOR ADMIN WORKER ASSIGN SYSTEM */
             assignedWorker: null,
 
             createdAt: new Date().toISOString()
