@@ -2,6 +2,19 @@ import { getUser } from "../Authentication/auth.js";
 
 const container = document.getElementById("historyList");
 
+const currentUser =
+    JSON.parse(
+        localStorage.getItem("currentUser")
+    );
+
+if (!currentUser) {
+
+    alert("Please login first.");
+
+    window.location.href =
+        "../Authentication/login.html";
+}
+
 /* =================================
    STORAGE
 ================================= */

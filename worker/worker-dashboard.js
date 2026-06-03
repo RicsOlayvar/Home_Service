@@ -332,7 +332,7 @@ function logout() {
     alert("Logged out successfully.");
 
     window.location.href =
-        "../homepage/view.html";
+        "../Authentication/worker-login.html";
 }
 
 /* =================================

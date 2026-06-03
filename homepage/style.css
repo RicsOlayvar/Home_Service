@@ -247,3 +247,21 @@ nav a:hover {
         padding: 6px 10px;
     }
 }
+
+.logout-btn{
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:#bb2d3b;
+}
+
+#user-info{
+    font-weight:bold;
+    color:white;
+}

@@ -3,6 +3,19 @@ import { addBooking } from "./storage.js";
 
 const form = document.getElementById("bookingForm");
 
+const currentUser =
+    JSON.parse(
+        localStorage.getItem("currentUser")
+    );
+
+if (!currentUser) {
+
+    alert("Please login first.");
+
+    window.location.href =
+        "../Authentication/login.html";
+}
+
 /* =================================
    SERVICE PRICES
 ================================= */

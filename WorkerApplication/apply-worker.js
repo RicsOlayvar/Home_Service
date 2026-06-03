@@ -1,5 +1,61 @@
 const form = document.getElementById("workerForm");
 
+const currentUser =
+    JSON.parse(
+        localStorage.getItem("currentUser")
+    );
+
+const currentWorker =
+    JSON.parse(
+        localStorage.getItem("currentWorker")
+    );
+
+/* NOT LOGGED IN */
+
+if (!currentUser && !currentWorker) {
+
+    alert("Please login first.");
+
+    window.location.href =
+        "../Authentication/login.html";
+}
+
+/* ADMIN CANNOT APPLY */
+
+if (
+    currentUser &&
+    currentUser.role === "admin"
+) {
+
+    alert(
+        "Administrators cannot apply as workers."
+    );
+
+    window.location.href =
+        "../homepage/view.html";
+}
+
+/* EXISTING WORKERS CANNOT REAPPLY */
+
+if (currentWorker) {
+
+    alert(
+        "You already have a worker account."
+    );
+
+    window.location.href =
+        "../Worker/worker-dashboard.html";
+}
+
+
+if (!currentUser) {
+
+    alert("Please login first.");
+
+    window.location.href =
+        "../Authentication/login.html";
+}
+
 function getApplications() {
     return JSON.parse(
         localStorage.getItem("workerApplications")
