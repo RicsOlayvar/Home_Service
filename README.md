@@ -126,13 +126,31 @@ TandikanServices/
 
 │   ├── style.css
 
+│   ├── logo.png
+
 │
 
 ├── Authentication/
 
+│   ├── login.css
+
+│   ├── login.js
+
 │   ├── login.html
 
+│   ├── signup.css
+
 │   ├── signup.html
+
+│   ├── signup.js
+
+│   ├── worker-auth.js
+
+│   ├── worker-login.css
+
+│   ├── worker-login.html
+
+│   ├── worker-login.js
 
 │   ├── auth.js
 
@@ -146,17 +164,25 @@ TandikanServices/
 
 │   ├── booking.js
 
+│   ├── storage.js
+
+│   ├── style.css
+
 │
 
 ├── History/
 
 │   ├── history.html
 
+│   ├── history.js
+
+│   ├── history.css
+
 │
 
 ├── Worker/
 
-│   ├── worker-login.html
+│   ├── worker-dashboard.css
 
 │   ├── worker-dashboard.html
 
@@ -166,6 +192,8 @@ TandikanServices/
 
 │   ├── manage-workers.js
 
+│   ├── manage-workers.css
+
 │
 
 ├── Admin/
@@ -174,13 +202,27 @@ TandikanServices/
 
 │   ├── admin.js
 
+│   ├── admin.css
+
+│   ├── add-worker.html
+
 │
 
 ├── WorkerApplication/
 
 │   ├── apply-worker.html
 
+│   ├── apply-worker.css
+
+│   ├── apply-worker.js
+
 │
+
+├── Map/
+
+│   ├── map.js
+
+│   
 
 └── assets/
 
