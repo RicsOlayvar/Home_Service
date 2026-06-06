@@ -2,18 +2,34 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Manage Workers</title>
 
-    <link rel="stylesheet" href="manage-workers.css">
+    <link
+        rel="stylesheet"
+        href="manage-workers.css"
+    >
+
 </head>
 
 <body>
 
+<!-- =================================
+     HEADER
+================================= -->
+
 <div class="header">
 
-    <h1>👷 Manage Workers</h1>
+    <h1>
+        👷 Manage Workers
+    </h1>
 
     <button onclick="goAdmin()">
         ⬅ Back to Admin
@@ -21,34 +37,94 @@
 
 </div>
 
+<!-- =================================
+     MAIN CONTAINER
+================================= -->
+
 <div class="container">
+
+    <!-- ==========================
+         ADD WORKER
+    =========================== -->
 
     <div class="form-card">
 
-        <h2>Add Worker</h2>
+        <h2>
+            ➕ Add Worker
+        </h2>
 
-        <input type="text" id="workerName" placeholder="Worker Name">
+        <input
+            type="text"
+            id="workerName"
+            placeholder="Worker Name"
+        >
 
-        <input type="email" id="workerEmail" placeholder="Worker Email">
+        <input
+            type="email"
+            id="workerEmail"
+            placeholder="Worker Email"
+        >
 
-        <input type="password" id="workerPassword" placeholder="Password">
+        <input
+            type="password"
+            id="workerPassword"
+            placeholder="Password"
+        >
 
         <select id="workerSpecialty">
-            <option value="">Select Specialty</option>
-            <option>Cleaning</option>
-            <option>Plumbing</option>
-            <option>Electrical</option>
-            <option>Gardening</option>
-            <option>Painting</option>
-            <option>Appliance Repair</option>
-            <option>Aircon Cleaning</option>
-            <option>Carpentry</option>
+
+            <option value="">
+                Select Specialty
+            </option>
+
+            <option>
+                Cleaning
+            </option>
+
+            <option>
+                Plumbing
+            </option>
+
+            <option>
+                Electrical
+            </option>
+
+            <option>
+                Gardening
+            </option>
+
+            <option>
+                Painting
+            </option>
+
+            <option>
+                Appliance Repair
+            </option>
+
+            <option>
+                Aircon Cleaning
+            </option>
+
+            <option>
+                Carpentry
+            </option>
+
         </select>
 
         <select id="workerAvailability">
-            <option>Available</option>
-            <option>Busy</option>
-            <option>On Leave</option>
+
+            <option>
+                Available
+            </option>
+
+            <option>
+                Busy
+            </option>
+
+            <option>
+                On Leave
+            </option>
+
         </select>
 
         <button onclick="addWorker()">
@@ -57,11 +133,214 @@
 
     </div>
 
-    <div>
+    <!-- ==========================
+         WORKER LIST
+    =========================== -->
 
-        <h2>Worker List</h2>
+    <div class="worker-section">
 
-        <div id="workerList"></div>
+        <h2>
+            👷 Worker List
+        </h2>
+
+        <!-- SEARCH -->
+
+        <div class="worker-controls">
+
+            <input
+                type="text"
+                id="searchWorker"
+                placeholder="Search worker name, email, specialty..."
+                onkeyup="loadWorkers()"
+            >
+
+            <select
+                id="filterAvailability"
+                onchange="loadWorkers()"
+            >
+
+                <option value="All">
+                    All Availability
+                </option>
+
+                <option value="Available">
+                    Available
+                </option>
+
+                <option value="Busy">
+                    Busy
+                </option>
+
+                <option value="On Leave">
+                    On Leave
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- SUMMARY -->
+
+        <div class="worker-summary">
+
+            <div class="summary-card">
+
+                <h3>Total Workers</h3>
+
+                <p id="totalWorkers">
+                    0
+                </p>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h3>Available</h3>
+
+                <p id="availableWorkers">
+                    0
+                </p>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h3>Busy</h3>
+
+                <p id="busyWorkers">
+                    0
+                </p>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h3>On Leave</h3>
+
+                <p id="leaveWorkers">
+                    0
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- LIST -->
+
+        <div id="workerList">
+
+            <p>
+                Loading workers...
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =================================
+     EDIT WORKER MODAL
+================================= -->
+
+<div
+    id="editModal"
+    class="modal"
+    style="display:none;"
+>
+
+    <div class="modal-content">
+
+        <h2>
+            ✏️ Edit Worker
+        </h2>
+
+        <input
+            type="hidden"
+            id="editWorkerId"
+        >
+
+        <input
+            type="text"
+            id="editName"
+            placeholder="Worker Name"
+        >
+
+        <input
+            type="email"
+            id="editEmail"
+            placeholder="Worker Email"
+        >
+
+        <input
+            type="password"
+            id="editPassword"
+            placeholder="Password"
+        >
+
+        <select id="editSpecialty">
+
+            <option>
+                Cleaning
+            </option>
+
+            <option>
+                Plumbing
+            </option>
+
+            <option>
+                Electrical
+            </option>
+
+            <option>
+                Gardening
+            </option>
+
+            <option>
+                Painting
+            </option>
+
+            <option>
+                Appliance Repair
+            </option>
+
+            <option>
+                Aircon Cleaning
+            </option>
+
+            <option>
+                Carpentry
+            </option>
+
+        </select>
+
+        <select id="editAvailability">
+
+            <option>
+                Available
+            </option>
+
+            <option>
+                Busy
+            </option>
+
+            <option>
+                On Leave
+            </option>
+
+        </select>
+
+        <div class="modal-buttons">
+
+            <button onclick="saveWorkerEdit()">
+                💾 Save Changes
+            </button>
+
+            <button onclick="closeModal()">
+                ❌ Cancel
+            </button>
+
+        </div>
 
     </div>
 
