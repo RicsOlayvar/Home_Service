@@ -1,3 +1,4 @@
+
 /* =================================
    USERS STORAGE
 ================================= */
@@ -9,6 +10,36 @@ export function getUsers() {
 export function saveUsers(users) {
     localStorage.setItem("users", JSON.stringify(users));
 }
+
+/* =================================
+   DEFAULT ADMIN ACCOUNT
+================================= */
+
+const users = getUsers();
+
+const adminExists = users.some(
+    user => user.email === "admin@tandikan.com"
+);
+
+if (!adminExists) {
+
+    users.push({
+
+        id: Date.now(),
+
+        name: "Admin Lenneth Arenio",
+
+        email: "admin@tandikan.com",
+
+        password: "admin123",
+
+        role: "admin"
+    });
+
+    saveUsers(users);
+}
+
+
 
 /* =================================
    CURRENT USER SESSION
